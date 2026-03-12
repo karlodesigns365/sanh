@@ -38,12 +38,7 @@
             z-index: 3000; border-bottom: 2px solid var(--primary);
         }
         .logo-box { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        
-        /* VEĆI LOGO I ANIMACIJA */
-        .logo-box img { 
-            height: 55px; /* Povećano sa 35px */
-            animation: logoFadeIn 1.2s ease-out; 
-        }
+        .logo-box img { height: 55px; animation: logoFadeIn 1.2s ease-out; }
         
         @keyframes logoFadeIn {
             0% { opacity: 0; transform: translateX(-20px); }
@@ -52,7 +47,7 @@
 
         .logo-text { font-weight:700; color:var(--primary); font-family:'Oswald'; font-size: 1.1rem; }
 
-        /* Hero sa Zastavicama */
+        /* Hero */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Hero.jpg');
@@ -61,12 +56,8 @@
             padding: 0 20px;
         }
         .hero-content { max-width: 850px; color: white; }
-        
         .flag-switch-box { margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; }
-        .flag-btn { 
-            background: none; border: 2px solid transparent; cursor: pointer; 
-            padding: 4px; border-radius: 50%; transition: 0.3s; 
-        }
+        .flag-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 4px; border-radius: 50%; transition: 0.3s; }
         .flag-btn:hover { border-color: white; transform: scale(1.1); }
         .flag-btn img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.3); }
 
@@ -124,7 +115,7 @@
 <nav>
     <a href="#" class="logo-box">
         <img src="LogoFavicon.png" alt="SANH Logo">
-        <span class="logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
+        <span class="logo-text" id="nav-logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
     </a>
 </nav>
 
@@ -147,7 +138,7 @@
     </div>
 
     <div class="video-container" data-aos="zoom-in">
-        <iframe src="https://www.youtube-nocookie.com/embed/XMZYZcoAcU0?rel=0&amp;showinfo=0" title="SANH Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/XMZYZcoAcU0" title="SANH Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <div style="text-align:center; margin-top:40px;" data-aos="flip-left">
@@ -187,10 +178,10 @@
         </div>
         <div data-aos="fade-left">
             <h3 style="margin-bottom:15px; color:var(--primary);" id="info-heading">Informacije</h3>
-            <p><strong>Ilica 99, 10000 Zagreb</strong></p>
-            <p>info@sanh.hr | +385 99 427 7865</p>
+            <p><strong id="info-address">Ilica 99, 10000 Zagreb</strong></p>
+            <p id="info-contact">info@sanh.hr | +385 99 427 7865</p>
             <div style="height: 300px; margin-top:20px; border-radius:8px; overflow:hidden;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.336495368555!2d15.9622910769382!3d45.814524109968414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6f082e566ed%3A0x6b4987f4c71e21b0!2sIlica%2099%2C%2010000%2C%20Zagreb!5e0!3m2!1shr!2shr!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.168705018619!2d15.961314312210815!3d45.81157100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6f0c430e793%3A0xc6829107955c4794!2sIlica%2099%2C%2010000%2C%20Zagreb!5e0!3m2!1shr!2shr!4v1700000000000!5m2!1shr!2shr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -199,18 +190,18 @@
 <footer>
     <div class="footer-grid">
         <div class="footer-col" data-aos="fade-up">
-            <h4>UPRAVA SAVEZA</h4>
-            <p><strong>Josip Kravar</strong> – Predsjednik<br>predsjednik@sanh.hr</p>
-            <p><strong>Nikola Vuger</strong> – Tajnik<br>tajnik@sanh.hr</p>
+            <h4 id="footer-board">UPRAVA SAVEZA</h4>
+            <p><strong>Josip Kravar</strong> – <span id="role-pres">Predsjednik</span><br>predsjednik@sanh.hr</p>
+            <p><strong>Nikola Vuger</strong> – <span id="role-sec">Tajnik</span><br>tajnik@sanh.hr</p>
         </div>
         <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
-            <h4>SLUŽBE</h4>
-            <p>Marketing: marketing@sanh.hr</p>
+            <h4 id="footer-services">SLUŽBE</h4>
+            <p><span id="role-mark">Marketing</span>: marketing@sanh.hr</p>
             <p>Press & PR: press@sanh.hr</p>
         </div>
         <div class="footer-col" data-aos="fade-up" data-aos-delay="200" style="text-align: right;">
             <img src="LogoFavicon.png" height="50" style="margin-bottom: 10px;">
-            <p>© 2026 Savez Australskog nogometa Hrvatske</p>
+            <p id="footer-copy">© 2026 Savez Australskog nogometa Hrvatske</p>
         </div>
     </div>
 </footer>
@@ -232,41 +223,93 @@
     });
     obs.observe(document.getElementById('yearCounter'));
 
-    const texts = {
+    const translations = {
         hr: {
-            welcome: "DOBRODOŠLI", assoc: "na službenu stranicu Saveza Australskog nogometa Hrvatske",
-            cta: "ŽELIŠ TRENIRATI?", aboutT: "Što je australski nogomet?", 
-            stat: "GODINA TRADICIJE U HRVATSKOJ", sponsor: "Sponzori & Partneri", 
-            contactH: "Kontaktiraj nas!", btnSend: "POŠALJI UPIT", infoH: "Informacije"
+            navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
+            welcome: "DOBRODOŠLI",
+            assoc: "na službenu stranicu Saveza Australskog nogometa Hrvatske",
+            cta: "ŽELIŠ TRENIRATI?",
+            aboutTitle: "Što je australski nogomet?",
+            aboutText: "Australski nogomet je momčadski sport koji se igra s 18 igrača u polju, a igra se na igralištu za kriket ili sličnom ovalnom igralištu, koje mora biti dugo 135-185 metara, a široko 110-150 metara. Igra se loptom jajastog oblika, ali je ona različita od one kojom se igra ragbi ili američki nogomet. Sličan je ragbiju, američkom nogometu i keltskom nogometu (Gaelic football), a koristi i neke elemente iz nogometa.",
+            statText: "GODINA TRADICIJE U HRVATSKOJ",
+            sponsorLabel: "Sponzori & Partneri",
+            contactHeading: "Kontaktiraj nas!",
+            formName: "Vaše Ime",
+            formEmail: "E-mail",
+            formMsg: "Vaša poruka...",
+            btnSend: "POŠALJI UPIT",
+            infoHeading: "Informacije",
+            address: "Ilica 99, 10000 Zagreb",
+            footerBoard: "UPRAVA SAVEZA",
+            footerServices: "SLUŽBE",
+            rolePres: "Predsjednik",
+            roleSec: "Tajnik",
+            roleMark: "Marketing",
+            footerCopy: "© 2026 Savez Australskog nogometa Hrvatske"
         },
         en: {
-            welcome: "WELCOME", assoc: "to the official website of the Croatian Australian Football Association",
-            cta: "WANT TO TRAIN?", aboutT: "What is Australian Football?", 
-            stat: "YEARS OF TRADITION IN CROATIA", sponsor: "Sponsors & Partners", 
-            contactH: "Contact us!", btnSend: "SEND INQUIRY", infoH: "Information"
+            navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
+            welcome: "WELCOME",
+            assoc: "to the official website of the Association of Australian Football Croatia",
+            cta: "WANT TO TRAIN?",
+            aboutTitle: "What is Australian Football?",
+            aboutText: "Australian rules football is a contact sport played by two teams of 18 players on an oval-shaped field, often a modified cricket ground. The game's objective is to score points by kicking the oval-shaped ball between a set of four goal posts. It combines elements of rugby, soccer, and Gaelic football into a fast-paced, high-scoring spectacle unique to Australia.",
+            statText: "YEARS OF TRADITION IN CROATIA",
+            sponsorLabel: "Sponsors & Partners",
+            contactHeading: "Contact Us!",
+            formName: "Your Name",
+            formEmail: "E-mail",
+            formMsg: "Your message...",
+            btnSend: "SEND INQUIRY",
+            infoHeading: "Information",
+            address: "Ilica 99, 10000 Zagreb, Croatia",
+            footerBoard: "BOARD MEMBERS",
+            footerServices: "DEPARTMENTS",
+            rolePres: "President",
+            roleSec: "Secretary",
+            roleMark: "Marketing",
+            footerCopy: "© 2026 Croatian Australian Football Association"
         }
     };
 
     function toggleLanguage(lang) {
-        document.getElementById('hero-welcome').innerText = texts[lang].welcome;
-        document.getElementById('hero-association').innerText = texts[lang].assoc;
-        document.getElementById('hero-cta').innerText = texts[lang].cta;
-        document.getElementById('title-about').innerText = texts[lang].aboutT;
-        document.getElementById('stat-text').innerText = texts[lang].stat;
-        document.getElementById('sponsor-label').innerText = texts[lang].sponsor;
-        document.getElementById('contact-heading').innerText = texts[lang].contactH;
-        document.getElementById('btn-send').innerText = texts[lang].btnSend;
-        document.getElementById('info-heading').innerText = texts[lang].infoH;
-        
-        if(lang === 'en') {
-            document.getElementById('f-name').placeholder = "Your Name";
-            document.getElementById('f-email').placeholder = "Email";
-            document.getElementById('f-msg').placeholder = "Your message...";
-        } else {
-            document.getElementById('f-name').placeholder = "Vaše Ime";
-            document.getElementById('f-email').placeholder = "E-mail";
-            document.getElementById('f-msg').placeholder = "Vaša poruka...";
-        }
+        // Update document lang attribute
+        document.documentElement.lang = lang;
+
+        // Nav
+        document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+
+        // Hero
+        document.getElementById('hero-welcome').innerText = translations[lang].welcome;
+        document.getElementById('hero-association').innerText = translations[lang].assoc;
+        document.getElementById('hero-cta').innerText = translations[lang].cta;
+
+        // About
+        document.getElementById('title-about').innerText = translations[lang].aboutTitle;
+        document.getElementById('text-about').innerText = translations[lang].aboutText;
+        document.getElementById('stat-text').innerText = translations[lang].statText;
+
+        // Sponsors
+        document.getElementById('sponsor-label').innerText = translations[lang].sponsorLabel;
+
+        // Contact Form
+        document.getElementById('contact-heading').innerText = translations[lang].contactHeading;
+        document.getElementById('f-name').placeholder = translations[lang].formName;
+        document.getElementById('f-email').placeholder = translations[lang].formEmail;
+        document.getElementById('f-msg').placeholder = translations[lang].formMsg;
+        document.getElementById('btn-send').innerText = translations[lang].btnSend;
+
+        // Info
+        document.getElementById('info-heading').innerText = translations[lang].infoHeading;
+        document.getElementById('info-address').innerText = translations[lang].address;
+
+        // Footer
+        document.getElementById('footer-board').innerText = translations[lang].footerBoard;
+        document.getElementById('footer-services').innerText = translations[lang].footerServices;
+        document.getElementById('role-pres').innerText = translations[lang].rolePres;
+        document.getElementById('role-sec').innerText = translations[lang].roleSec;
+        document.getElementById('role-mark').innerText = translations[lang].roleMark;
+        document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
     }
 </script>
 </body>
