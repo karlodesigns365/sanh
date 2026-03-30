@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprezentacija | SANH</title>
+    
+    <link rel="icon" type="image/png" href="LogoFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #002D56; 
+            --accent: #E11B22;  
+            --text-dark: #1a1a1a;
+            --gold: #FFD700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3 { font-weight: 700; text-transform: uppercase; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            background: white; display: flex; justify-content: space-between; align-items: center;
+            z-index: 3000; border-bottom: 2px solid var(--primary);
+        }
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-box img { height: 40px; }
+        .logo-text { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.8rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+        /* Header Area */
+        .page-header { 
+            margin-top: 72px; padding: 100px 10% 60px; 
+            background: var(--primary); text-align: center; color: white;
+        }
+        .flag-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 5px; }
+        .flag-btn img { width: 30px; border-radius: 50%; }
+
+        /* Content Container */
+        .container { padding: 60px 10%; max-width: 900px; margin: 0 auto; }
+
+        /* Accordion Style */
+        .rep-item { margin-bottom: 25px; border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .rep-trigger { 
+            width: 100%; padding: 30px; background: #f8f9fa; border: none; 
+            text-align: left; cursor: pointer; font-family: 'Montserrat'; font-weight: 700;
+            font-size: 1.6rem; display: flex; justify-content: space-between; align-items: center;
+            color: var(--primary); transition: 0.3s;
+        }
+        .rep-trigger:hover { background: #f1f1f1; }
+        .rep-trigger.active i { transform: rotate(180deg); color: var(--accent); }
+
+        .rep-content { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); background: white; }
+        .rep-inner { padding: 30px; border-top: 1px solid #eee; }
+
+        /* Tables */
+        .comp-title { color: var(--accent); font-size: 1.3rem; margin: 25px 0 15px; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px; }
+        .comp-title:first-of-type { margin-top: 0; }
+        
+        .results-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        .results-table th { background: #f4f7fa; color: var(--primary); padding: 12px; text-align: left; font-size: 0.85rem; text-transform: uppercase; border-bottom: 2px solid #ddd; }
+        .results-table td { padding: 12px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        .results-table tr:hover { background: #fcfcfc; }
+        
+        .rank-badge { font-weight: 700; color: var(--primary); }
+        .rank-1st { color: #b8860b; background: #fff9e6; padding: 2px 8px; border-radius: 4px; border: 1px solid #ffe699; }
+
+        /* Footer */
+        footer { background: #f8f9fa; padding: 40px 10%; border-top: 1px solid #ddd; margin-top: 60px; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: white; flex-direction: column; padding: 20px;
+                border-bottom: 2px solid var(--primary); text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .container { padding: 40px 5%; }
+            .rep-trigger { font-size: 1.3rem; padding: 20px; }
+            .footer-grid { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-box">
+        <img src="LogoFavicon.png" alt="SANH Logo">
+        <span class="logo-text" id="nav-logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">NASLOVNICA</a></li>
+        <li><a href="novosti.html">NOVOSTI</a></li>
+        <li><a href="klubovi.html">KLUBOVI</a></li>
+        <li><a href="natjecanja.html">NATJECANJA</a></li>
+        <li><a href="reprezentacija.html" class="active">REPREZENTACIJA</a></li>
+    </ul>
+</nav>
+
+<header class="page-header">
+    <div style="margin-bottom: 20px;">
+        <button class="flag-btn" onclick="toggleLanguage('hr')"><img src="https://flagcdn.com/w80/hr.png" alt="HR"></button>
+        <button class="flag-btn" onclick="toggleLanguage('en')"><img src="https://flagcdn.com/w80/gb.png" alt="EN"></button>
+    </div>
+    <h1 id="page-title">REPREZENTACIJA</h1>
+</header>
+
+<div class="container">
+    
+    <div class="rep-item" data-aos="fade-up">
+        <button class="rep-trigger" onclick="toggleRep(this)">
+            QUEENS (ŽENE) <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="rep-content">
+            <div class="rep-inner">
+                <h3 class="comp-title">EURO KUP</h3>
+                <table class="results-table">
+                    <thead><tr><th>Godina</th><th>Natjecanje</th><th>Plasman & Lokacija</th></tr></thead>
+                    <tbody>
+                        <tr><td>2015</td><td>European Cup</td><td>4. mjesto (Umag, Croatia)</td></tr>
+                        <tr><td>2016</td><td>European Cup</td><td><span class="rank-badge">3. mjesto</span> (Lisabon, Portugal)</td></tr>
+                        <tr><td>2017</td><td>European Cup</td><td>7. mjesto (Bordeaux, France)</td></tr>
+                        <tr><td>2018</td><td>European Cup</td><td>4. mjesto (Cork, Republic of Ireland)</td></tr>
+                        <tr><td>2019</td><td>European Cup</td><td>8. mjesto (Norrtälje, Sweden)</td></tr>
+                        <tr><td>2020</td><td>-</td><td>Otkazano (Cancelled)</td></tr>
+                        <tr><td>2021</td><td>-</td><td>Otkazano (Cancelled)</td></tr>
+                        <tr><td>2022</td><td>European Cup</td><td>TBD (Kiel, Germany)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="rep-item" data-aos="fade-up" data-aos-delay="100">
+        <button class="rep-trigger" onclick="toggleRep(this)">
+            KNIGHTS (MUŠKARCI) <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="rep-content">
+            <div class="rep-inner">
+                
+                <h3 class="comp-title">EURO KUP</h3>
+                <table class="results-table">
+                    <thead><tr><th>Godina</th><th>Plasman & Lokacija</th></tr></thead>
+                    <tbody>
+                        <tr><td>2008</td><td>2. mjesto (Prague, Czech Republic)</td></tr>
+                        <tr><td>2009</td><td>3. mjesto (Samobor, Croatia)</td></tr>
+                        <tr><td>2010</td><td><span class="rank-badge rank-1st">1. mjesto (Milan, Italy)</span></td></tr>
+                        <tr><td>2011</td><td>2. mjesto (Belfast, Northern Ireland)</td></tr>
+                        <tr><td>2012</td><td>5. mjesto (Edinburgh, Scotland)</td></tr>
+                        <tr><td>2013</td><td>3. mjesto (Bordeaux, France)</td></tr>
+                        <tr><td>2014</td><td>2. mjesto (London, England)</td></tr>
+                        <tr><td>2015</td><td>3. mjesto (Umag, Croatia)</td></tr>
+                        <tr><td>2016</td><td><span class="rank-badge rank-1st">1. mjesto (Lisabon, Portugal)</span></td></tr>
+                        <tr><td>2017</td><td>7. mjesto (Bordeaux, France)</td></tr>
+                        <tr><td>2018</td><td>3. mjesto (Cork, Republic of Ireland)</td></tr>
+                        <tr><td>2019</td><td>6. mjesto (Norrtälje, Sweden)</td></tr>
+                        <tr><td>2020</td><td>Otkazano</td></tr>
+                        <tr><td>2021</td><td>Otkazano</td></tr>
+                        <tr><td>2022</td><td>4. mjesto (Edinburgh, Scotland)</td></tr>
+                        <tr><td>2023</td><td>5. mjesto (Kiel, Germany)</td></tr>
+                        <tr><td>2024</td><td>TBD (Kiel, Germany)</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="comp-title">EUROPSKO PRVENSTVO</h3>
+                <table class="results-table">
+                    <tbody>
+                        <tr><td>2010</td><td>5. mjesto (Malmo, Sweden)</td></tr>
+                        <tr><td>2013</td><td>5. mjesto (Dublin, Republic of Ireland)</td></tr>
+                        <tr><td>2019</td><td>4. mjesto (London, England)</td></tr>
+                        <tr><td>2022</td><td>4. mjesto (Zagreb, Croatia)</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="comp-title">SVJETSKO PRVENSTVO</h3>
+                <table class="results-table">
+                    <tbody>
+                        <tr><td>2017</td><td><span class="rank-badge rank-1st">1. mjesto – II Division (Melbourne, Australia)</span></td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="comp-title">OSTALO</h3>
+                <table class="results-table">
+                    <tbody>
+                        <tr><td>2007</td><td>Tri-nations cup – 1. mjesto (Zagreb, Croatia)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <p id="footer-copy">© 2026 Savez Australskog nogometa Hrvatske</p>
+        <img src="LogoFavicon.png" height="30">
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true });
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+    function toggleRep(btn) {
+        btn.classList.toggle('active');
+        let content = btn.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
+
+    const translations = {
+        hr: {
+            navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
+            pageTitle: "REPREZENTACIJA",
+            footerCopy: "© 2026 Savez Australskog nogometa Hrvatske"
+        },
+        en: {
+            navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
+            pageTitle: "NATIONAL TEAM",
+            footerCopy: "© 2026 Croatian Australian Football Association"
+        }
+    };
+
+    function toggleLanguage(lang) {
+        document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+        document.getElementById('page-title').innerText = translations[lang].pageTitle;
+        document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+    }
+</script>
+</body>
+</html>

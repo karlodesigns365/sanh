@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klubovi | SANH</title>
+    
+    <link rel="icon" type="image/png" href="LogoFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #002D56; 
+            --accent: #E11B22;  
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; letter-spacing: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3 { font-weight: 700; text-transform: uppercase; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            background: white; display: flex; justify-content: space-between; align-items: center;
+            z-index: 3000; border-bottom: 2px solid var(--primary);
+        }
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-box img { height: 40px; }
+        .logo-text { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.8rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+        /* Header Area (Dosljedno Novostima) */
+        .page-header { 
+            margin-top: 72px; padding: 100px 10% 60px; 
+            background: var(--primary); text-align: center; color: white;
+        }
+        .flag-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 5px; }
+        .flag-btn img { width: 30px; border-radius: 50%; }
+
+        /* Content Container */
+        .container { padding: 60px 10%; max-width: 1000px; margin: 0 auto; }
+        .intro-text { text-align: center; margin-bottom: 50px; font-size: 1.1rem; }
+
+        /* Accordion Style */
+        .club-category { margin-top: 40px; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; color: var(--primary); }
+        
+        .club-item { margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; }
+        .club-trigger { 
+            width: 100%; padding: 20px; background: #f8f9fa; border: none; 
+            text-align: left; cursor: pointer; font-family: 'Montserrat'; font-weight: 700;
+            font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center;
+            color: var(--primary); transition: 0.3s;
+        }
+        .club-trigger:hover { background: #f1f1f1; }
+        .club-trigger i { transition: 0.3s; }
+        .club-trigger.active i { transform: rotate(180deg); color: var(--accent); }
+
+        .club-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: white; }
+        .club-inner { padding: 30px; border-top: 1px solid #eee; }
+
+        .club-main-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .club-logo { width: 150px; height: auto; margin-top: 20px; display: block; }
+        
+        .info-section { margin-top: 25px; padding: 20px; background: #f4f7fa; border-radius: 6px; }
+        .info-section h4 { color: var(--accent); margin-bottom: 10px; font-size: 1rem; }
+        .trophy-section { margin-top: 25px; border-left: 4px solid #ffd700; padding-left: 20px; }
+        .trophy-section h4 { color: var(--primary); margin-bottom: 10px; }
+
+        /* Footer */
+        footer { background: #f8f9fa; padding: 40px 10%; border-top: 1px solid #ddd; margin-top: 60px; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: white; flex-direction: column; padding: 20px;
+                border-bottom: 2px solid var(--primary); text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .logo-text { display: none; }
+            .container { padding: 40px 5%; }
+            .footer-grid { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-box">
+        <img src="LogoFavicon.png" alt="SANH Logo">
+        <span class="logo-text" id="nav-logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" id="menu-home">NASLOVNICA</a></li>
+        <li><a href="novosti.html" id="menu-news">NOVOSTI</a></li>
+        <li><a href="klubovi.html" id="menu-clubs" class="active">KLUBOVI</a></li>
+        <li><a href="natjecanja.html" id="menu-comp">NATJECANJA</a></li>
+        <li><a href="reprezentacija.html" id="menu-rep">REPREZENTACIJA</a></li>
+    </ul>
+</nav>
+
+<header class="page-header">
+    <div style="margin-bottom: 20px;">
+        <button class="flag-btn" onclick="toggleLanguage('hr')"><img src="https://flagcdn.com/w80/hr.png" alt="HR"></button>
+        <button class="flag-btn" onclick="toggleLanguage('en')"><img src="https://flagcdn.com/w80/gb.png" alt="EN"></button>
+    </div>
+    <h1 id="page-title">KLUBOVI</h1>
+</header>
+
+<div class="container">
+    <p class="intro-text" id="intro-p" data-aos="fade-up">
+        Iako se radi o jednoj maloj zajednici, SANH svake godine broji sve više i više ženskih i muških ekipa.
+    </p>
+
+    <h2 class="club-category" id="cat-women">Ženski klubovi</h2>
+    
+    <div class="club-item" data-aos="fade-up">
+        <button class="club-trigger" onclick="toggleClub(this)">
+            ZAGREB PANTHERS <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="club-content">
+            <div class="club-inner">
+                <img src="ZagrebPanthers.jpeg" alt="Zagreb Panthers" class="club-main-img">
+                <p id="panthers-text">Zagreb Cvjetno Dockers osnovane su kao ŽKAN Zagreb Panthers i najstariji su zagrebački ženski klub australskog nogovmeta. Osnovane su 2016. godine suradnjom muških klubova Zagreb Hawks i Zapruđe Giants. Te godine igraju utakmice Hrvatske lige protiv cura iz Velike Gorice, VG Mambas. Stječući iskustvo kroz utakmice, čak 7 Pantera odlazi na EuroCup u Lisabon i sudjeluje u osvajanju brončane medalje. Bronca osvojena u Lisabonu je do sada ostala najveće međunarodno postignuće hrvatske ženske reprezentacije australskog nogometa. Pantere sudjeluju i na EuroCupu 2017. u Bordeauxu (7. mjesto), 2018. u Corku (4. mjesto), te 2019. u Norrtälje (7. mjesto). Pantere su igrale sezonu Hrvatske lige 2018./2019. protiv novoosnovanog kluba Sesvete Redlegs te tako našle dostojne protivnice i na domaćoj sceni. U budućim godinama Pantere se nadaju daljnjem jačanju kluba, prikupljanju još više članica, te konačno i osvajanju hrvatske lige, Hrvatskog kupa, Lige prvaka i svih ostalih natjecanja u kojima će sudjelovati.</p>
+                
+                <div class="info-section">
+                    <h4 id="info-label">OSNOVNE INFORMACIJE</h4>
+                    <p><strong>Adresa:</strong> Horvaćanski zavoj, rugby igralište Mladost (iza KIF-a)</p>
+                    <p><strong>Kontakt:</strong> Nika Fučkar, 0915688303, njubito@gmail.com</p>
+                    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/zagreb.panthers" target="_blank">Zagreb Panthers</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/zagrebcvjetnodockersice/" target="_blank">@zagrebcvjetnodockersice</a></p>
+                </div>
+
+                <div class="trophy-section">
+                    <h4 id="trophy-label">TROFEJI</h4>
+                    <p><strong>Hrvatski kup:</strong> Osvajači 2020., 2024.</p>
+                </div>
+                <img src="PanthersLogo.jpeg" alt="Panthers Logo" class="club-logo">
+            </div>
+        </div>
+    </div>
+
+    <h2 class="club-category" id="cat-men" style="margin-top:60px;">Muški klubovi</h2>
+
+    <div class="club-item" data-aos="fade-up">
+        <button class="club-trigger" onclick="toggleClub(this)">
+            SESVETE DOUBLE BLUES <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="club-content">
+            <div class="club-inner">
+                <img src="SesveteDoubleBlues.jpg" alt="Sesvete Double Blues" class="club-main-img">
+                <p id="sesvete-text">Klub je osnovan krajem 2014. na inicijativu tri igrača Zagreb Hawksa (David Glavaš, Dinko Irsag, Dejan Pavković). Sesvete Double Blues sudjeluju u hrvatskoj i regionalnoj ligi, hrvatskom kupu, te su povremeni sudionik europske Lige prvaka. Ekipa trenira na pomoćnom terenu NK Sesveta u Bistričkoj ulici, a svi zainteresirani se mogu javiti i priključiti treninzima.</p>
+                
+                <div class="info-section">
+                    <h4 id="info-label-2">OSNOVNE INFORMACIJE</h4>
+                    <p><strong>Adresa:</strong> Bistrička bb, Sesvete (treninzi)</p>
+                    <p><strong>Telefon:</strong> +385 95 5844 146 (Josip Karadža, predsjednik)</p>
+                    <p><strong>E-mail:</strong> kansesvete@gmail.com</p>
+                </div>
+
+                <div class="trophy-section">
+                    <h4 id="trophy-label-2">TROFEJI</h4>
+                    <p><strong>HLAN Prvaci:</strong> 2017., 2019., 2021., 2022., 2023.</p>
+                    <p><strong>Hrvatski kup:</strong> 2016., 2017., 2019., 2022., 2023.</p>
+                </div>
+                <img src="SesveteDoubleBluesLogo.png" alt="Sesvete Logo" class="club-logo">
+            </div>
+        </div>
+    </div>
+
+    <div class="club-item" data-aos="fade-up">
+        <button class="club-trigger" onclick="toggleClub(this)">
+            ZAGREB CVJETNO DOCKERS <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="club-content">
+            <div class="club-inner">
+                <img src="ZagrebCvjetnoDockers.jpg" alt="Zagreb Cvjetno Dockers" class="club-main-img">
+                <p id="dockers-text">Zagreb Cvjetno Dockers je sljednik kluba Velika Gorica Bombers koji je 2011. osvojio prvenstvo Hrvatske. Nakon dogovora o suradnji sa AFL klubom Fremantle Dockers, klub 2013. postaje Velika Gorica Dockers, a 2014. seli u Zagreb i osniva se Zagreb Cvjetno Dockers. Tijekom svog postojanja klub je zabilježio iznimne rezultate, nekoliko naslova prvaka Hrvatske te Centralno-europskih prvaka. Od 2015. do 2019. klub je nastupao na Ligi prvaka te je u tom razdoblju konstantno među 10 najboljih klubova Europe. Zanimljiva podudarnost je što su u vrijeme dogovaranja partnerstva sa Fremantle Dockersima igrači često izlazili u kultni zagrebački klub Sidro što je ujedno i simbol kluba.</p>
+                
+                <div class="info-section">
+                    <h4 id="info-label-3">OSNOVNE INFORMACIJE</h4>
+                    <p><strong>Adresa:</strong> Horvaćanski zavoj, Teren za australski nogomet (iza KIF-a)</p>
+                    <p><strong>Kontakt:</strong> Ivan (0989692814), ivan_nar@yahoo.com; Viktor (0989148041), viktor.kolcic@gmail.com</p>
+                    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/ZCDockers/" target="_blank">ZCDockers</a></p>
+                </div>
+
+                <div class="trophy-section">
+                    <h4 id="trophy-label-3">TROFEJI</h4>
+                    <p><strong>HLAN Prvaci:</strong> 2015., 2016.</p>
+                    <p><strong>CEAFL Osvajači:</strong> 2017., 2018.</p>
+                </div>
+                <img src="DockersLogo.png" alt="Dockers Logo" class="club-logo">
+            </div>
+        </div>
+    </div>
+
+    <div class="club-item" data-aos="fade-up">
+        <button class="club-trigger" onclick="toggleClub(this)">
+            ZAGREB HAWKS <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="club-content">
+            <div class="club-inner">
+                <img src="ZagrebHawks.jpg" alt="Zagreb Hawks" class="club-main-img">
+                <p id="hawks-text">Klub je osnovan 2005. kao prvi klub australskog nogometa u Hrvatskoj te je nosio ime Zagreb Giants. Klub mjenja ime 2006. godine u Zagreb Hawks koje ime ostaje do danas. Hawksi su dio obitelji u koju spada i profesionalni klubovi Hawthorn Hawksi i Box Hill Hawksi. Sudjelujemo u Hrvatskoj ligi australskog nogometa, srednjoeurpskoj ligi te povremeno u ligi prvaka. Klub se se temelji na vrijednostima kao što su rad, zajedništvo i poštenje.</p>
+                
+                <div class="info-section">
+                    <h4 id="info-label-4">OSNOVNE INFORMACIJE</h4>
+                    <p><strong>Adresa:</strong> Hvarska 11, 10000 Zagreb</p>
+                    <p><strong>Kontakt:</strong> Josip Kravar (kravar13@gmail.com); Marko Belić (markobelich@gmail.com); Josip Habljak (josip.habljak@gmail.com)</p>
+                </div>
+
+                <div class="trophy-section">
+                    <h4 id="trophy-label-4">TROFEJI</h4>
+                    <p><strong>HLAN Prvaci:</strong> 2013., 2014.</p>
+                    <p><strong>Hrvatski kup:</strong> 2013., 2014.</p>
+                    <p><strong>CAFL Osvajači:</strong> 2014., 2015., 2019.</p>
+                </div>
+                <img src="ZagrebHawksLogo.jpg" alt="Hawks Logo" class="club-logo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <p id="footer-copy">© 2026 Savez Australskog nogometa Hrvatske</p>
+        <img src="LogoFavicon.png" height="30">
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true });
+    
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+    function toggleClub(btn) {
+        btn.classList.toggle('active');
+        let content = btn.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
+
+    const translations = {
+        hr: {
+            navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
+            menuHome: "NASLOVNICA", menuNews: "NOVOSTI", menuClubs: "KLUBOVI", menuComp: "NATJECANJA", menuRep: "REPREZENTACIJA",
+            pageTitle: "KLUBOVI",
+            intro: "Iako se radi o jednoj maloj zajednici, SANH svake godine broji sve više i više ženskih i muških ekipa.",
+            catWomen: "Ženski klubovi", catMen: "Muški klubovi",
+            infoLabel: "OSNOVNE INFORMACIJE", trophyLabel: "TROFEJI",
+            footerCopy: "© 2026 Savez Australskog nogometa Hrvatske"
+        },
+        en: {
+            navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
+            menuHome: "HOME", menuNews: "NEWS", menuClubs: "CLUBS", menuComp: "COMPETITIONS", menuRep: "NATIONAL TEAM",
+            pageTitle: "CLUBS",
+            intro: "Although a small community, CAFA counts more and more women's and men's teams every year.",
+            catWomen: "Women's Clubs", catMen: "Men's Clubs",
+            infoLabel: "BASIC INFORMATION", trophyLabel: "TROPHIES",
+            footerCopy: "© 2026 Croatian Australian Football Association"
+        }
+    };
+
+    function toggleLanguage(lang) {
+        document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+        document.getElementById('menu-home').innerText = translations[lang].menuHome;
+        document.getElementById('menu-news').innerText = translations[lang].menuNews;
+        document.getElementById('menu-clubs').innerText = translations[lang].menuClubs;
+        document.getElementById('menu-comp').innerText = translations[lang].menuComp;
+        document.getElementById('menu-rep').innerText = translations[lang].menuRep;
+        document.getElementById('page-title').innerText = translations[lang].pageTitle;
+        document.getElementById('intro-p').innerText = translations[lang].intro;
+        document.getElementById('cat-women').innerText = translations[lang].catWomen;
+        document.getElementById('cat-men').innerText = translations[lang].catMen;
+        document.querySelectorAll('[id^="info-label"]').forEach(el => el.innerText = translations[lang].infoLabel);
+        document.querySelectorAll('[id^="trophy-label"]').forEach(el => el.innerText = translations[lang].trophyLabel);
+        document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+    }
+</script>
+</body>
+</html>

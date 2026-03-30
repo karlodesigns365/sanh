@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natjecanja | SANH</title>
+    
+    <link rel="icon" type="image/png" href="LogoFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #002D56; 
+            --accent: #E11B22;  
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; letter-spacing: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3 { font-weight: 700; text-transform: uppercase; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            background: white; display: flex; justify-content: space-between; align-items: center;
+            z-index: 3000; border-bottom: 2px solid var(--primary);
+        }
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-box img { height: 40px; }
+        .logo-text { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.8rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+        /* Header Area */
+        .page-header { 
+            margin-top: 72px; padding: 100px 10% 60px; 
+            background: var(--primary); text-align: center; color: white;
+        }
+        .flag-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 5px; }
+        .flag-btn img { width: 30px; border-radius: 50%; }
+
+        /* Content Container */
+        .container { padding: 60px 10%; max-width: 900px; margin: 0 auto; }
+
+        /* Accordion Style */
+        .comp-item { margin-bottom: 20px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .comp-trigger { 
+            width: 100%; padding: 25px; background: #f8f9fa; border: none; 
+            text-align: left; cursor: pointer; font-family: 'Montserrat'; font-weight: 700;
+            font-size: 1.4rem; display: flex; justify-content: space-between; align-items: center;
+            color: var(--primary); transition: 0.3s;
+        }
+        .comp-trigger:hover { background: #f1f1f1; }
+        .comp-trigger.active i { transform: rotate(180deg); color: var(--accent); }
+
+        .comp-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: white; }
+        .comp-inner { padding: 30px; border-top: 1px solid #eee; }
+
+        .intro-desc { margin-bottom: 30px; font-size: 1.05rem; color: #444; }
+
+        /* Tables for Winners */
+        .winners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .winners-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .winners-table th { background: var(--primary); color: white; padding: 10px; text-align: left; font-size: 0.9rem; }
+        .winners-table td { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        .winners-table tr:nth-child(even) { background: #f9f9f9; }
+        .gender-title { color: var(--accent); font-size: 1.2rem; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+
+        /* Footer */
+        footer { background: #f8f9fa; padding: 40px 10%; border-top: 1px solid #ddd; margin-top: 60px; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: white; flex-direction: column; padding: 20px;
+                border-bottom: 2px solid var(--primary); text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .winners-grid { grid-template-columns: 1fr; }
+            .container { padding: 40px 5%; }
+            .footer-grid { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-box">
+        <img src="LogoFavicon.png" alt="SANH Logo">
+        <span class="logo-text" id="nav-logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" id="menu-home">NASLOVNICA</a></li>
+        <li><a href="novosti.html" id="menu-news">NOVOSTI</a></li>
+        <li><a href="klubovi.html" id="menu-clubs">KLUBOVI</a></li>
+        <li><a href="natjecanja.html" id="menu-comp" class="active">NATJECANJA</a></li>
+        <li><a href="reprezentacija.html" id="menu-rep">REPREZENTACIJA</a></li>
+    </ul>
+</nav>
+
+<header class="page-header">
+    <div style="margin-bottom: 20px;">
+        <button class="flag-btn" onclick="toggleLanguage('hr')"><img src="https://flagcdn.com/w80/hr.png" alt="HR"></button>
+        <button class="flag-btn" onclick="toggleLanguage('en')"><img src="https://flagcdn.com/w80/gb.png" alt="EN"></button>
+    </div>
+    <h1 id="page-title">NATJECANJA</h1>
+</header>
+
+<div class="container">
+    
+    <div class="comp-item" data-aos="fade-up">
+        <button class="comp-trigger" onclick="toggleComp(this)">
+            HLAN <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="comp-content">
+            <div class="comp-inner">
+                <p class="intro-desc" id="hlan-desc">Hrvatska liga australskog nogometa igra se od 2007. godine kada su Zagreb Hawksi igrali protiv Kaptol Saintsa. Saintsi su se potom podijelili u dva kluba, Agram Power i Velika Gorica Bombers. Od tada ovo natjecanje neprestano raste i trenutno imamo mušku i žensku ligu.</p>
+                
+                <div class="winners-grid">
+                    <div>
+                        <h3 class="gender-title" id="m-title">MUŠKI</h3>
+                        <table class="winners-table">
+                            <thead><tr><th>Godina</th><th>Pobjednik</th></tr></thead>
+                            <tbody>
+                                <tr><td>2007</td><td>Kaptol Saints</td></tr>
+                                <tr><td>2008</td><td>Kaptol Saints</td></tr>
+                                <tr><td>2009</td><td>Kaptol Saints</td></tr>
+                                <tr><td>2010</td><td>Agram Power</td></tr>
+                                <tr><td>2011</td><td>Velika Gorica Bombers</td></tr>
+                                <tr><td>2012</td><td>Zapruđe Giants</td></tr>
+                                <tr><td>2013</td><td>Zagreb Hawks</td></tr>
+                                <tr><td>2014</td><td>Zagreb Hawks</td></tr>
+                                <tr><td>2015</td><td>Zagreb Cvjetno Dockers</td></tr>
+                                <tr><td>2016</td><td>Zagreb Cvjetno Dockers</td></tr>
+                                <tr><td>2017</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2018</td><td>Velika Gorica Bombers</td></tr>
+                                <tr><td>2019</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2021</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2022</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2023</td><td>Sesvete Double Blues</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="gender-title" id="w-title">ŽENSKI</h3>
+                        <table class="winners-table">
+                            <thead><tr><th>Godina</th><th>Pobjednica</th></tr></thead>
+                            <tbody>
+                                <tr><td>2007</td><td>Velika Gorica Mambas</td></tr>
+                                <tr><td>2018</td><td>Velika Gorica Mambas</td></tr>
+                                <tr><td>2019</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2020</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2021</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2022</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2023</td><td>Sesvete Redlegs</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comp-item" data-aos="fade-up" data-aos-delay="100">
+        <button class="comp-trigger" onclick="toggleComp(this)">
+            HRVATSKI KUP <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="comp-content">
+            <div class="comp-inner">
+                <p class="intro-desc" id="cup-desc">Hrvatski kup se prvi put igrao 2010. godine. Iako se najčešće igra kao uvod u sezonu ili pak kao zadnji turnir u sezoni koji posluži i kao dobra fešta, osvajanje kupa je uvijek bilo stvar prestiža.</p>
+                
+                <div class="winners-grid">
+                    <div>
+                        <h3 class="gender-title" id="m-title-2">MUŠKI</h3>
+                        <table class="winners-table">
+                            <thead><tr><th>Godina</th><th>Osvajač</th></tr></thead>
+                            <tbody>
+                                <tr><td>2010</td><td>Agram Power</td></tr>
+                                <tr><td>2011</td><td>Zaprešić Eagles</td></tr>
+                                <tr><td>2012</td><td>Zapruđe Giants</td></tr>
+                                <tr><td>2013</td><td>Zagreb Hawks</td></tr>
+                                <tr><td>2014</td><td>Zagreb Hawks</td></tr>
+                                <tr><td>2015</td><td>Zapruđe Giants</td></tr>
+                                <tr><td>2016</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2017</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2018</td><td>Velika Gorica Bombers</td></tr>
+                                <tr><td>2019</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2020</td><td>Zagreb Cvjetno Dockers</td></tr>
+                                <tr><td>2021</td><td>Zagreb Cvjetno Dockers</td></tr>
+                                <tr><td>2022</td><td>Sesvete Double Blues</td></tr>
+                                <tr><td>2023</td><td>Sesvete Double Blues</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="gender-title" id="w-title-2">ŽENSKI</h3>
+                        <table class="winners-table">
+                            <thead><tr><th>Godina</th><th>Osvajačica</th></tr></thead>
+                            <tbody>
+                                <tr><td>2019</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2020</td><td>Zagreb Panthers</td></tr>
+                                <tr><td>2021</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2022</td><td>Sesvete Redlegs</td></tr>
+                                <tr><td>2023</td><td>Sesvete Redlegs</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <p id="footer-copy">© 2026 Savez Australskog nogometa Hrvatske</p>
+        <img src="LogoFavicon.png" height="30">
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true });
+    
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+    function toggleComp(btn) {
+        btn.classList.toggle('active');
+        let content = btn.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    }
+
+    const translations = {
+        hr: {
+            navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
+            menuHome: "NASLOVNICA", menuNews: "NOVOSTI", menuClubs: "KLUBOVI", menuComp: "NATJECANJA", menuRep: "REPREZENTACIJA",
+            pageTitle: "NATJECANJA",
+            hlanDesc: "Hrvatska liga australskog nogometa igra se od 2007. godine...",
+            cupDesc: "Hrvatski kup se prvi put igrao 2010. godine...",
+            mTitle: "MUŠKI", wTitle: "ŽENSKI",
+            footerCopy: "© 2026 Savez Australskog nogometa Hrvatske"
+        },
+        en: {
+            navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
+            menuHome: "HOME", menuNews: "NEWS", menuClubs: "CLUBS", menuComp: "COMPETITIONS", menuRep: "NATIONAL TEAM",
+            pageTitle: "COMPETITIONS",
+            hlanDesc: "The Croatian Australian Football League has been played since 2007...",
+            cupDesc: "The Croatian Cup was first played in 2010...",
+            mTitle: "MEN'S", wTitle: "WOMEN'S",
+            footerCopy: "© 2026 Croatian Australian Football Association"
+        }
+    };
+
+    function toggleLanguage(lang) {
+        document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+        document.getElementById('menu-home').innerText = translations[lang].menuHome;
+        document.getElementById('menu-news').innerText = translations[lang].menuNews;
+        document.getElementById('menu-clubs').innerText = translations[lang].menuClubs;
+        document.getElementById('menu-comp').innerText = translations[lang].menuComp;
+        document.getElementById('menu-rep').innerText = translations[lang].menuRep;
+        document.getElementById('page-title').innerText = translations[lang].pageTitle;
+        document.getElementById('hlan-desc').innerText = translations[lang].hlanDesc;
+        document.getElementById('cup-desc').innerText = translations[lang].cupDesc;
+        document.getElementById('m-title').innerText = translations[lang].mTitle;
+        document.getElementById('w-title').innerText = translations[lang].wTitle;
+        document.getElementById('m-title-2').innerText = translations[lang].mTitle;
+        document.getElementById('w-title-2').innerText = translations[lang].wTitle;
+        document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+    }
+</script>
+</body>
+</html>

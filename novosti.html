@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novosti | SANH</title>
+    
+    <link rel="icon" type="image/png" href="LogoFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #002D56; 
+            --accent: #E11B22;  
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; letter-spacing: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: var(--text-dark); line-height: 1.6; }
+        
+        h1, h2, h3 { font-weight: 700; text-transform: uppercase; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            background: white; display: flex; justify-content: space-between; align-items: center;
+            z-index: 3000; border-bottom: 2px solid var(--primary);
+        }
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-box img { height: 40px; }
+        .logo-text { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.8rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+        /* Header Area */
+        .news-header { 
+            margin-top: 72px; padding: 100px 10% 60px; 
+            background: var(--primary); text-align: center; color: white;
+        }
+        .flag-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 5px; }
+        .flag-btn img { width: 30px; border-radius: 50%; }
+
+        /* Content */
+        .article-container { padding: 60px 10%; max-width: 800px; margin: 0 auto; }
+        .news-content h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 25px; line-height: 1.3; }
+        .news-content p { margin-bottom: 20px; font-size: 1.05rem; }
+
+        .donation-box { 
+            background: #f4f7fa; border-left: 5px solid var(--accent); 
+            padding: 30px; margin: 40px 0; border-radius: 4px;
+        }
+        .goget-btn { 
+            display: inline-block; background: var(--accent); color: white; 
+            padding: 15px 30px; text-decoration: none; font-weight: 700; 
+            border-radius: 4px; margin-top: 20px; transition: 0.3s; text-transform: uppercase;
+        }
+        .goget-btn:hover { background: var(--primary); transform: translateY(-2px); }
+
+        /* Footer */
+        footer { background: #f8f9fa; padding: 40px 10%; border-top: 1px solid #ddd; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: white; flex-direction: column; padding: 20px;
+                border-bottom: 2px solid var(--primary); text-align: center;
+            }
+            .nav-links.active { display: flex; }
+            .logo-text { display: none; }
+            .article-container { padding: 40px 5%; }
+            .footer-grid { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-box">
+        <img src="LogoFavicon.png" alt="SANH Logo">
+        <span class="logo-text" id="nav-logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" id="menu-home">NASLOVNICA</a></li>
+        <li><a href="novosti.html" id="menu-news" class="active">NOVOSTI</a></li>
+        <li><a href="klubovi.html" id="menu-clubs">KLUBOVI</a></li>
+        <li><a href="natjecanja.html" id="menu-comp">NATJECANJA</a></li>
+        <li><a href="reprezentacija.html" id="menu-rep">REPREZENTACIJA</a></li>
+    </ul>
+</nav>
+
+<header class="news-header">
+    <div style="margin-bottom: 20px;">
+        <button class="flag-btn" onclick="toggleLanguage('hr')"><img src="https://flagcdn.com/w80/hr.png" alt="HR"></button>
+        <button class="flag-btn" onclick="toggleLanguage('en')"><img src="https://flagcdn.com/w80/gb.png" alt="EN"></button>
+    </div>
+    <h1 id="page-title">NOVOSTI</h1>
+</header>
+
+<div class="article-container">
+    <article data-aos="fade-up">
+        <div class="news-content">
+            <h2 id="article-title">Croatian Knights trebaju vašu podršku!</h2>
+            <div id="news-body">
+                <p>Već 20 godina australski nogomet u Hrvatskoj živi zahvaljujući volonterima, entuzijazmu i zajedništvu. Od nule — do dva Euro Cup naslova, do povijesne pobjede na International Cupu 2017. u Melbourneu, i do rasta nacionalne lige.</p>
+                <p>Sada nas čeka najveći projekt do sada: Pripreme u Adelaideu 2026. – domu sporta koji volimo.</p>
+                <p><strong>Zašto Adelaide?</strong> Jer trening s najboljima, pripremne utakmice i povezivanje s hrvatskom dijasporom mogu podići naš razvoj na novu razinu i izravno pomoći rastu sporta u Hrvatskoj.</p>
+            </div>
+
+            <div class="donation-box">
+                <p id="don-info">Skupljamo 60.000 € isključivo za avionske karte za 30 igrača i trenera. Svaka donacija ima nagradu — zahvalnice, ime na zastavi, majice i dresovi.</p>
+                <a href="https://gogetfunding.com/adelaide-2026-help-the-croatian-knights-grow-the-game-from-the-source/" target="_blank" class="goget-btn" id="don-btn">👉 DONIRAJ OVDJE</a>
+            </div>
+
+            <p id="p-thanks">Hvala vam što pomažete razvijati sport od samog izvora i graditi novu priču hrvatskog footyja.</p>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <p id="footer-copy">© 2026 Savez Australskog nogometa Hrvatske</p>
+        <img src="LogoFavicon.png" height="30">
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true });
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+    const translations = {
+        hr: {
+            navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
+            menuHome: "NASLOVNICA", menuNews: "NOVOSTI", menuClubs: "KLUBOVI", menuComp: "NATJECANJA", menuRep: "REPREZENTACIJA",
+            pageTitle: "NOVOSTI",
+            articleTitle: "Croatian Knights trebaju vašu podršku!",
+            body: `<p>Već 20 godina australski nogomet u Hrvatskoj živi zahvaljujući volonterima, entuzijazmu i zajedništvu. Od nule — do dva Euro Cup naslova, do povijesne pobjede na International Cupu 2017. u Melbourneu, i do rasta nacionalne lige.</p>
+                   <p>Sada nas čeka najveći projekt do sada: Pripreme u Adelaideu 2026. – domu sporta koji volimo.</p>
+                   <p><strong>Zašto Adelaide?</strong> Jer trening s najboljima, pripremne utakmice i povezivanje s hrvatskom dijasporom mogu podići naš razvoj na novu razinu i izravno pomoći rastu sporta u Hrvatskoj.</p>`,
+            donInfo: "Skupljamo 60.000 € isključivo za avionske karte za 30 igrača i trenera. Svaka donacija ima nagradu — zahvalnice, ime na zastavi, majice i dresovi.",
+            donBtn: "👉 DONIRAJ OVDJE",
+            thanks: "Hvala vam što pomažete razvijati sport od samog izvora i graditi novu priču hrvatskog footyja.",
+            footerCopy: "© 2026 Savez Australskog nogometa Hrvatske"
+        },
+        en: {
+            navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
+            menuHome: "HOME", menuNews: "NEWS", menuClubs: "CLUBS", menuComp: "COMPETITIONS", menuRep: "NATIONAL TEAM",
+            pageTitle: "LATEST NEWS",
+            articleTitle: "The Croatian Knights need your support!",
+            body: `<p>For 20 years, Australian football in Croatia has been built through volunteer work, passion, and community spirit. From nothing — to two Euro Cup titles, a historic 2017 International Cup win in Melbourne, and a growing national league.</p>
+                   <p>Now we are preparing for the most important step in our history: A pre-season trip to Adelaide in 2026 — the birthplace of the sport we love.</p>
+                   <p><strong>Why Adelaide?</strong> Because training with top teams, playing practice matches, and reconnecting with the Croatian diaspora will help us develop the sport where it matters most — at home in Croatia.</p>`,
+            donInfo: "We are raising €60,000 strictly for flight tickets for 30 players and coaches. Every donation has a reward — from Thank You posters and your name on our flag to shirts and jumpers.",
+            donBtn: "👉 SUPPORT THE FUNDRAISER",
+            thanks: "Together, let’s grow the game from its source and build the next chapter of Croatian footy. Thank you for your support!",
+            footerCopy: "© 2026 Croatian Australian Football Association"
+        }
+    };
+
+    function toggleLanguage(lang) {
+        document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+        document.getElementById('menu-home').innerText = translations[lang].menuHome;
+        document.getElementById('menu-news').innerText = translations[lang].menuNews;
+        document.getElementById('menu-clubs').innerText = translations[lang].menuClubs;
+        document.getElementById('menu-comp').innerText = translations[lang].menuComp;
+        document.getElementById('menu-rep').innerText = translations[lang].menuRep;
+        document.getElementById('page-title').innerText = translations[lang].pageTitle;
+        document.getElementById('article-title').innerText = translations[lang].articleTitle;
+        document.getElementById('news-body').innerHTML = translations[lang].body;
+        document.getElementById('don-info').innerText = translations[lang].donInfo;
+        document.getElementById('don-btn').innerText = translations[lang].donBtn;
+        document.getElementById('p-thanks').innerText = translations[lang].thanks;
+        document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+    }
+</script>
+</body>
+</html>
