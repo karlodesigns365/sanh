@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SANH | Savez Australskog nogometa Hrvatske</title>
+    
+    <link rel="icon" type="image/png" href="LogoFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #002D56; 
+            --accent: #E11B22;  
+            --light-bg: #fdfdfd;
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; width: 100%; position: relative; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #ffffff; 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            padding-top: 75px; 
+        }
+
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed !important; 
+            top: 0 !important; 
+            left: 0 !important;
+            width: 100% !important; 
+            padding: 10px 5% !important;
+            background: white !important; 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important;
+            z-index: 999999 !important;
+            border-bottom: 2px solid var(--primary) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+        }
+
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-box img { height: 50px; }
+        .logo-text { font-weight:700; color:var(--primary); font-family:'Oswald'; font-size: 1.1rem; }
+        .nav-links { display: flex; list-style: none; gap: 15px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.85rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            height: calc(100vh - 75px);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Hero.jpg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding: 0 20px;
+        }
+        .hero-content { max-width: 850px; color: white; }
+        .hero-content h1 { font-size: clamp(3rem, 10vw, 6.5rem); line-height: 0.9; margin-bottom: 10px; font-weight: 700; }
+        .flag-switch-box { margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; }
+        .flag-btn { background: none; border: 2px solid transparent; cursor: pointer; padding: 4px; border-radius: 50%; }
+        .flag-btn img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+
+        /* Sections */
+        section { padding: 80px 10%; overflow: hidden; }
+        .section-title { font-size: 2.8rem; color: var(--primary); margin-bottom: 40px; text-align: center; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent); margin: 10px auto; }
+
+        /* Video */
+        .video-container {
+            max-width: 850px; width: 100%; margin: 50px auto;
+            position: relative; padding-bottom: 56.25%; height: 0;
+            background: #000; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        /* Sponsor Slider Fix */
+        .sponsor-block { background: white; padding: 60px 0; overflow: hidden; border-top: 1px solid #eee; }
+        .slider-track { 
+            display: flex; 
+            width: calc(250px * 10); 
+            animation: scrollSponsors 20s linear infinite; 
+            align-items: center; 
+        }
+        .slider-track a { width: 250px; text-align: center; padding: 0 30px; flex-shrink: 0; }
+        .slider-track img { height: 70px; width: auto; object-fit: contain; }
+
+        @keyframes scrollSponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 5)); }
+        }
+
+        /* Contact & Map */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; }
+        .form-box { background: var(--light-bg); padding: 30px; border: 1px solid #eee; border-radius: 8px; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .submit-btn { background: var(--primary); color: white; border: none; padding: 15px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 4px; }
+        .map-responsive { overflow:hidden; padding-bottom:75%; position:relative; height:0; border-radius: 8px; margin-top: 20px; border: 1px solid #eee; }
+        .map-responsive iframe { left:0; top:0; height:100%; width:100%; position:absolute; border:0; }
+
+        /* Footer */
+        footer { background: var(--primary); color: white; padding: 60px 10% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; }
+        .footer-col h4 { margin-bottom: 20px; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+        .footer-col p { font-size: 0.9rem; margin-bottom: 10px; color: #cbd5e0; }
+        .social-icons { display: flex; gap: 15px; margin-top: 10px; }
+        .social-icons a { color: white; font-size: 1.5rem; }
+
+        /* --- MOBILE FIX --- */
+        @media (max-width: 768px) {
+            section { padding: 60px 5%; }
+            .logo-text { display: none; }
+            .menu-toggle { display: block !important; }
+            .nav-links { 
+                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: white; flex-direction: column; padding: 10px 0; 
+                text-align: center; border-bottom: 2px solid var(--primary);
+            }
+            .nav-links.active { display: flex !important; }
+            .nav-links a { display: block; padding: 15px; }
+
+            /* POPRAVAK ZA KONTAKT SEKCIJU NA MOBITELU */
+            .contact-grid { 
+                grid-template-columns: 1fr !important; /* Prisiljava jedan stupac */
+                gap: 50px; 
+            }
+            .map-responsive {
+                padding-bottom: 100%; /* Veća mapa na mobitelu za lakše pregledavanje */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-box">
+        <img src="LogoFavicon.png" alt="SANH Logo">
+        <span class="logo-text" id="nav-logo-text">SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE</span>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" id="menu-home">NASLOVNICA</a></li>
+        <li><a href="novosti.html" id="menu-news">NOVOSTI</a></li>
+        <li><a href="klubovi.html" id="menu-clubs">KLUBOVI</a></li>
+        <li><a href="natjecanja.html" id="menu-comp">NATJECANJA</a></li>
+        <li><a href="reprezentacija.html" id="menu-rep">REPREZENTACIJA</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-content" data-aos="zoom-out" data-aos-duration="1200">
+        <div class="flag-switch-box" data-aos="fade-down" data-aos-delay="400">
+            <button class="flag-btn" onclick="toggleLanguage('hr')"><img src="https://flagcdn.com/w80/hr.png" alt="HR"></button>
+            <button class="flag-btn" onclick="toggleLanguage('en')"><img src="https://flagcdn.com/w80/gb.png" alt="EN"></button>
+        </div>
+        <h1 id="hero-welcome">DOBRODOŠLI</h1>
+        <p id="hero-association">na službenu stranicu Saveza Australskog nogometa Hrvatske</p>
+        <a href="#kontakt" class="cta-btn" id="hero-cta" style="display:inline-block; margin-top:25px; color:white; border:2px solid white; padding: 12px 30px; text-decoration:none; font-weight:bold; border-radius: 4px;">ŽELIŠ TRENIRATI?</a>
+    </div>
+</section>
+
+<section id="o-sportu">
+    <h2 class="section-title" data-aos="fade-down" id="title-about">Što je australski nogomet?</h2>
+    <div class="content-left" data-aos="fade-right">
+        <p id="text-about">Australski nogomet je momčadski sport koji se igra s 18 igrača u polju, a igra se na igralištu za kriket ili sličnom ovalnom igralištu, koje mora biti dugo 135-185 metara, a široko 110-150 metara. Igra se loptom jajastog oblika, ali je ona različita od one kojom se igra ragbi ili američki nogomet. Sličan je ragbiju, američkom nogometu i keltskom nogometu (Gaelic football), a koristi i neke elemente iz nogometa.</p>
+    </div>
+
+    <div class="video-container" data-aos="zoom-in">
+        <iframe src="https://www.youtube.com/embed/XMZYZcoAcU0" title="SANH Video" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;" data-aos="flip-left">
+        <span id="yearCounter" style="font-size: 6rem; font-family:'Oswald'; color:var(--accent); font-weight:700;">0</span>
+        <p id="stat-text" style="font-weight:700; color:#888; letter-spacing:1px;">GODINA TRADICIJE U HRVATSKOJ</p>
+    </div>
+</section>
+
+<div class="sponsor-block">
+    <h2 class="section-title" data-aos="fade-up" id="sponsor-label">Sponzori & Partneri</h2>
+    <div class="slider-track">
+        <a href="https://afleurope.org/" target="_blank"><img src="AFLPrijatelj.png" alt="AFL Europe"></a>
+        <a href="https://croatia.embassy.gov.au/" target="_blank"><img src="Ambasada.png" alt="Australian Embassy"></a>
+        <a href="https://jurcevic.com/" target="_blank"><img src="JurcevicSponzor.png" alt="Jurcevic"></a>
+        <a href="https://ilirijabiograd.com/en" target="_blank"><img src="IlirijaSponzor.jpg" alt="Ilirija"></a>
+        <a href="https://bigmcompany.com/" target="_blank"><img src="BIGMSponzor.png" alt="Big M"></a>
+        <a href="https://afleurope.org/" target="_blank"><img src="AFLPrijatelj.png"></a>
+        <a href="https://croatia.embassy.gov.au/" target="_blank"><img src="Ambasada.png"></a>
+        <a href="https://jurcevic.com/" target="_blank"><img src="JurcevicSponzor.png"></a>
+        <a href="https://ilirijabiograd.com/en" target="_blank"><img src="IlirijaSponzor.jpg"></a>
+        <a href="https://bigmcompany.com/" target="_blank"><img src="BIGMSponzor.png"></a>
+    </div>
+</div>
+
+<section id="kontakt">
+    <div class="contact-grid">
+        <div data-aos="fade-right">
+            <h2 id="contact-heading" style="margin-bottom:20px;">Kontaktiraj nas!</h2>
+            <div class="form-box">
+                <form id="contact-form">
+                    <input type="text" name="name" id="f-name" placeholder="Vaše Ime" required>
+                    <input type="email" name="email" id="f-email" placeholder="E-mail" required>
+                    <textarea name="message" id="f-msg" placeholder="Vaša poruka..." rows="4" required></textarea>
+                    <button type="submit" class="submit-btn" id="btn-send">POŠALJI UPIT</button>
+                </form>
+                <div id="form-response" style="display:none; margin-top:15px; color:var(--primary); font-weight:bold; text-align:center;">
+                    Hvala! Vaša poruka je uspješno poslana.
+                </div>
+            </div>
+        </div>
+        <div data-aos="fade-left">
+            <h3 style="margin-bottom:15px; color:var(--primary);" id="info-heading">Informacije</h3>
+            <p><strong id="info-address">Ilica 99, 10000 Zagreb</strong></p>
+            <p id="info-contact">info@sanh.hr | +385 99 427 7865</p>
+            <div class="map-responsive">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.5625350012724!2d15.958221275820897!3d45.812710510118734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6e0dafe2d33%3A0x96caa112916ec450!2sIlica%2099%2C%2010000%2C%20Zagreb!5e1!3m2!1sen!2shr!4v1774864387319!5m2!1sen!2shr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col" data-aos="fade-up">
+            <h4 id="footer-board">UPRAVA SAVEZA</h4>
+            <p><strong>Josip Kravar</strong> – <span id="role-pres">Predsjednik</span> <br> <small>predsjednik@sanh.hr</small></p>
+            <p><strong>Nikola Vuger</strong> – <span id="role-sec">Tajnik</span> <br> <small>tajnik@sanh.hr</small></p>
+        </div>
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h4 id="footer-social-title">PRATITE NAS</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200" style="text-align: right;">
+            <img src="LogoFavicon.png" height="50">
+            <p id="footer-copy">© 2026 Savez Australskog nogometa Hrvatske</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    function toggleMenu() {
+        document.getElementById('nav-links').classList.toggle('active');
+    }
+
+    let started = false;
+    const obs = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && !started) {
+            let curr = 0;
+            const iv = setInterval(() => {
+                if(curr < 21) { curr++; document.getElementById('yearCounter').innerText = curr; }
+                else clearInterval(iv);
+            }, 80);
+            started = true;
+        }
+    }, { threshold: 0.5 });
+    obs.observe(document.getElementById('yearCounter'));
+
+    const translations = {
+        hr: { navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE", footerCopy: "© 2026 Savez Australskog nogometa Hrvatske" },
+        en: { navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION", footerCopy: "© 2026 Croatian Australian Football Association" }
+    };
+
+    function toggleLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+    }
+
+// --- KONTAKT FORMA SKRIPTA (Poboljšana verzija) ---
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwPWa5FuT7fCCjFLB8IIfNMPPvm8loel3MFhI_Ap6K83HnbBYsf4LUUkXwQc7vdxwTG/exec';
+const form = document.getElementById('contact-form');
+const responseMsg = document.getElementById('form-response');
+const btnSend = document.getElementById('btn-send');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    btnSend.disabled = true;
+    btnSend.innerText = "Slanje...";
+
+    // Koristimo URLSearchParams umjesto FormData za bolju kompatibilnost s GAS-om
+    const formData = new URLSearchParams(new FormData(form));
+
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: formData,
+        mode: 'no-cors' // Ovo rješava problem s CORS blokadom
+    })
+    .then(() => {
+        // Budući da koristimo 'no-cors', ne možemo čitati odgovor "Success", 
+        // ali ako nema errora u catchu, smatramo da je poslano.
+        btnSend.style.display = "none";
+        form.reset();
+        responseMsg.style.display = "block";
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        btnSend.disabled = false;
+        btnSend.innerText = "Pokušajte ponovno";
+        alert("Došlo je do greške. Provjerite internetsku vezu.");
+    });
+});
+</script>
+</body>
+</html>
