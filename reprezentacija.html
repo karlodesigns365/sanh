@@ -101,11 +101,11 @@
     </a>
     <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
     <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">NASLOVNICA</a></li>
-        <li><a href="novosti.html">NOVOSTI</a></li>
-        <li><a href="klubovi.html">KLUBOVI</a></li>
-        <li><a href="natjecanja.html">NATJECANJA</a></li>
-        <li><a href="reprezentacija.html" class="active">REPREZENTACIJA</a></li>
+        <li><a href="index.html" id="menu-home">NASLOVNICA</a></li>
+        <li><a href="novosti.html" id="menu-news">NOVOSTI</a></li>
+        <li><a href="klubovi.html" id="menu-clubs">KLUBOVI</a></li>
+        <li><a href="natjecanja.html" id="menu-comp">NATJECANJA</a></li>
+        <li><a href="reprezentacija.html" id="menu-rep" class="active">REPREZENTACIJA</a></li>
     </ul>
 </nav>
 
@@ -121,22 +121,31 @@
     
     <div class="rep-item" data-aos="fade-up">
         <button class="rep-trigger" onclick="toggleRep(this)">
-            QUEENS (ŽENE) <i class="fas fa-chevron-down"></i>
+            <span id="title-queens">QUEENS (ŽENE)</span> <i class="fas fa-chevron-down"></i>
         </button>
         <div class="rep-content">
             <div class="rep-inner">
-                <h3 class="comp-title">EURO KUP</h3>
+                <h3 class="comp-title class-euro-cup">EURO KUP</h3>
                 <table class="results-table">
-                    <thead><tr><th>Godina</th><th>Natjecanje</th><th>Plasman & Lokacija</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th class="th-year">Godina</th>
+                            <th class="th-comp">Natjecanje</th>
+                            <th class="th-rank">Plasman & Lokacija</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>2015</td><td>European Cup</td><td>4. mjesto (Umag, Croatia)</td></tr>
-                        <tr><td>2016</td><td>European Cup</td><td><span class="rank-badge">3. mjesto</span> (Lisabon, Portugal)</td></tr>
-                        <tr><td>2017</td><td>European Cup</td><td>7. mjesto (Bordeaux, France)</td></tr>
-                        <tr><td>2018</td><td>European Cup</td><td>4. mjesto (Cork, Republic of Ireland)</td></tr>
-                        <tr><td>2019</td><td>European Cup</td><td>8. mjesto (Norrtälje, Sweden)</td></tr>
-                        <tr><td>2020</td><td>-</td><td>Otkazano (Cancelled)</td></tr>
-                        <tr><td>2021</td><td>-</td><td>Otkazano (Cancelled)</td></tr>
-                        <tr><td>2022</td><td>European Cup</td><td>TBD (Kiel, Germany)</td></tr>
+                        <tr><td>2015</td><td>European Cup</td><td><span id="q-15">4. mjesto (Umag, Croatia)</span></td></tr>
+                        <tr><td>2016</td><td>European Cup</td><td><span class="rank-badge"><span id="q-16-rank">3. mjesto</span></span> <span id="q-16-loc">(Lisabon, Portugal)</span></td></tr>
+                        <tr><td>2017</td><td>European Cup</td><td><span id="q-17">7. mjesto (Bordeaux, France)</span></td></tr>
+                        <tr><td>2018</td><td>European Cup</td><td><span id="q-18">4. mjesto (Cork, Republic of Ireland)</span></td></tr>
+                        <tr><td>2019</td><td>European Cup</td><td><span id="q-19">8. mjesto (Norrtälje, Sweden)</span></td></tr>
+                        <tr><td>2020</td><td>-</td><td><span class="txt-cancelled-1">Otkazano</span></td></tr>
+                        <tr><td>2021</td><td>-</td><td><span class="txt-cancelled-2">Otkazano</span></td></tr>
+                        <tr><td>2022</td><td>European Cup</td><td><span class="txt-dns-1">nisu nastupile (Edinburgh, Scotland)</span></td></tr>
+                        <tr><td>2023</td><td>European Cup</td><td><span class="txt-dns-2">nisu nastupile (Kiel, Germany)</span></td></tr>
+                        <tr><td>2024</td><td>European Cup</td><td><span id="q-24">7. mjesto (Kiel, Germany)</span></td></tr>
+                        <tr><td>2025</td><td>European Cup</td><td><span id="q-25">9. mjesto (Amsterdam, Netherlands)</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -145,56 +154,62 @@
 
     <div class="rep-item" data-aos="fade-up" data-aos-delay="100">
         <button class="rep-trigger" onclick="toggleRep(this)">
-            KNIGHTS (MUŠKARCI) <i class="fas fa-chevron-down"></i>
+            <span id="title-knights">KNIGHTS (MUŠKARCI)</span> <i class="fas fa-chevron-down"></i>
         </button>
         <div class="rep-content">
             <div class="rep-inner">
                 
-                <h3 class="comp-title">EURO KUP</h3>
+                <h3 class="comp-title class-euro-cup">EURO KUP</h3>
                 <table class="results-table">
-                    <thead><tr><th>Godina</th><th>Plasman & Lokacija</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th class="th-year">Godina</th>
+                            <th class="th-rank-loc">Plasman & Lokacija</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>2008</td><td>2. mjesto (Prague, Czech Republic)</td></tr>
-                        <tr><td>2009</td><td>3. mjesto (Samobor, Croatia)</td></tr>
-                        <tr><td>2010</td><td><span class="rank-badge rank-1st">1. mjesto (Milan, Italy)</span></td></tr>
-                        <tr><td>2011</td><td>2. mjesto (Belfast, Northern Ireland)</td></tr>
-                        <tr><td>2012</td><td>5. mjesto (Edinburgh, Scotland)</td></tr>
-                        <tr><td>2013</td><td>3. mjesto (Bordeaux, France)</td></tr>
-                        <tr><td>2014</td><td>2. mjesto (London, England)</td></tr>
-                        <tr><td>2015</td><td>3. mjesto (Umag, Croatia)</td></tr>
-                        <tr><td>2016</td><td><span class="rank-badge rank-1st">1. mjesto (Lisabon, Portugal)</span></td></tr>
-                        <tr><td>2017</td><td>7. mjesto (Bordeaux, France)</td></tr>
-                        <tr><td>2018</td><td>3. mjesto (Cork, Republic of Ireland)</td></tr>
-                        <tr><td>2019</td><td>6. mjesto (Norrtälje, Sweden)</td></tr>
-                        <tr><td>2020</td><td>Otkazano</td></tr>
-                        <tr><td>2021</td><td>Otkazano</td></tr>
-                        <tr><td>2022</td><td>4. mjesto (Edinburgh, Scotland)</td></tr>
-                        <tr><td>2023</td><td>5. mjesto (Kiel, Germany)</td></tr>
-                        <tr><td>2024</td><td>TBD (Kiel, Germany)</td></tr>
+                        <tr><td>2008</td><td><span id="k-08">2. mjesto (Prague, Czech Republic)</span></td></tr>
+                        <tr><td>2009</td><td><span id="k-09">3. mjesto (Samobor, Croatia)</span></td></tr>
+                        <tr><td>2010</td><td><span class="rank-badge rank-1st" id="k-10">1. mjesto (Milan, Italy)</span></td></tr>
+                        <tr><td>2011</td><td><span id="k-11">2. mjesto (Belfast, Northern Ireland)</span></td></tr>
+                        <tr><td>2012</td><td><span id="k-12">5. mjesto (Edinburgh, Scotland)</span></td></tr>
+                        <tr><td>2013</td><td><span id="k-13">3. mjesto (Bordeaux, France)</span></td></tr>
+                        <tr><td>2014</td><td><span id="k-14">2. mjesto (London, England)</span></td></tr>
+                        <tr><td>2015</td><td><span id="k-15">3. mjesto (Umag, Croatia)</span></td></tr>
+                        <tr><td>2016</td><td><span class="rank-badge rank-1st" id="k-16">1. mjesto (Lisabon, Portugal)</span></td></tr>
+                        <tr><td>2017</td><td><span id="k-17">7. mjesto (Bordeaux, France)</span></td></tr>
+                        <tr><td>2018</td><td><span id="k-18">3. mjesto (Cork, Republic of Ireland)</span></td></tr>
+                        <tr><td>2019</td><td><span id="k-19">6. mjesto (Norrtälje, Sweden)</span></td></tr>
+                        <tr><td>2020</td><td><span class="txt-cancelled-3">Otkazano</span></td></tr>
+                        <tr><td>2021</td><td><span class="txt-cancelled-4">Otkazano</span></td></tr>
+                        <tr><td>2022</td><td><span id="k-22">4. mjesto (Edinburgh, Scotland)</span></td></tr>
+                        <tr><td>2023</td><td><span id="k-23">5. mjesto (Kiel, Germany)</span></td></tr>
+                        <tr><td>2024</td><td><span id="k-24">3. mjesto (Kiel, Germany)</span></td></tr>
+                        <tr><td>2025</td><td><span id="k-25">7. mjesto (Amsterdam, Netherlands)</span></td></tr>
                     </tbody>
                 </table>
 
-                <h3 class="comp-title">EUROPSKO PRVENSTVO</h3>
+                <h3 class="comp-title" id="title-euro-champs">EUROPSKO PRVENSTVO</h3>
                 <table class="results-table">
                     <tbody>
-                        <tr><td>2010</td><td>5. mjesto (Malmo, Sweden)</td></tr>
-                        <tr><td>2013</td><td>5. mjesto (Dublin, Republic of Ireland)</td></tr>
-                        <tr><td>2019</td><td>4. mjesto (London, England)</td></tr>
-                        <tr><td>2022</td><td>4. mjesto (Zagreb, Croatia)</td></tr>
+                        <tr><td>2010</td><td><span id="ke-10">5. mjesto (Malmo, Sweden)</span></td></tr>
+                        <tr><td>2013</td><td><span id="ke-13">5. mjesto (Dublin, Republic of Ireland)</span></td></tr>
+                        <tr><td>2019</td><td><span id="ke-19">4. mjesto (London, England)</span></td></tr>
+                        <tr><td>2022</td><td><span id="ke-22">4. mjesto (Zagreb, Croatia)</span></td></tr>
                     </tbody>
                 </table>
 
-                <h3 class="comp-title">SVJETSKO PRVENSTVO</h3>
+                <h3 class="comp-title" id="title-world-champs">SVJETSKO PRVENSTVO</h3>
                 <table class="results-table">
                     <tbody>
-                        <tr><td>2017</td><td><span class="rank-badge rank-1st">1. mjesto – II Division (Melbourne, Australia)</span></td></tr>
+                        <tr><td>2017</td><td><span class="rank-badge rank-1st" id="kw-17">1. mjesto – II Division (Melbourne, Australia)</span></td></tr>
                     </tbody>
                 </table>
 
-                <h3 class="comp-title">OSTALO</h3>
+                <h3 class="comp-title" id="title-other">OSTALO</h3>
                 <table class="results-table">
                     <tbody>
-                        <tr><td>2007</td><td>Tri-nations cup – 1. mjesto (Zagreb, Croatia)</td></tr>
+                        <tr><td>2007</td><td><span id="ko-07">Tri-nations cup – 1. mjesto (Zagreb, Croatia)</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -228,20 +243,116 @@
     const translations = {
         hr: {
             navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
+            menuHome: "NASLOVNICA", menuNews: "NOVOSTI", menuClubs: "KLUBOVI", menuComp: "NATJECANJA", menuRep: "REPREZENTACIJA",
             pageTitle: "REPREZENTACIJA",
+            titleQueens: "QUEENS (ŽENE)", titleKnights: "KNIGHTS (MUŠKARCI)",
+            euroCup: "EURO KUP", euroChamps: "EUROPSKO PRVENSTVO", worldChamps: "SVJETSKO PRVENSTVO", other: "OSTALO",
+            thYear: "Godina", thComp: "Natjecanje", thRank: "Plasman & Lokacija",
+            cancelled: "Otkazano", dns: "nisu nastupile",
+            // Queens plasmani
+            q15: "4. mjesto (Umag, Croatia)", q16r: "3. mjesto", q16l: " (Lisabon, Portugal)", q17: "7. mjesto (Bordeaux, France)",
+            q18: "4. mjesto (Cork, Republic of Ireland)", q19: "8. mjesto (Norrtälje, Sweden)", q24: "7. mjesto (Kiel, Germany)", q25: "9. mjesto (Amsterdam, Netherlands)",
+            // Knights plasmani
+            k08: "2. mjesto (Prague, Czech Republic)", k09: "3. mjesto (Samobor, Croatia)", k10: "1. mjesto (Milan, Italy)", k11: "2. mjesto (Belfast, Northern Ireland)",
+            k12: "5. mjesto (Edinburgh, Scotland)", k13: "3. mjesto (Bordeaux, France)", k14: "2. mjesto (London, England)", k15: "3. mjesto (Umag, Croatia)",
+            k16: "1. mjesto (Lisabon, Portugal)", k17: "7. mjesto (Bordeaux, France)", k18: "3. mjesto (Cork, Republic of Ireland)", k19: "6. mjesto (Norrtälje, Sweden)",
+            k22: "4. mjesto (Edinburgh, Scotland)", k23: "5. mjesto (Kiel, Germany)", k24: "3. mjesto (Kiel, Germany)", k25: "7. mjesto (Amsterdam, Netherlands)",
+            // Europsko & Svjetsko & Ostalo
+            ke10: "5. mjesto (Malmo, Sweden)", ke13: "5. mjesto (Dublin, Republic of Ireland)", ke19: "4. mjesto (London, England)", ke22: "4. mjesto (Zagreb, Croatia)",
+            kw17: "1. mjesto – II Division (Melbourne, Australia)", ko07: "Tri-nations cup – 1. mjesto (Zagreb, Croatia)",
             footerCopy: "© 2026 Savez Australskog nogometa Hrvatske"
         },
         en: {
             navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
+            menuHome: "HOME", menuNews: "NEWS", menuClubs: "CLUBS", menuComp: "COMPETITIONS", menuRep: "NATIONAL TEAM",
             pageTitle: "NATIONAL TEAM",
+            titleQueens: "QUEENS (WOMEN)", titleKnights: "KNIGHTS (MEN)",
+            euroCup: "EURO CUP", euroChamps: "EUROPEAN CHAMPIONSHIP", worldChamps: "WORLD CHAMPIONSHIP", other: "OTHER",
+            thYear: "Year", thComp: "Competition", thRank: "Rank & Location",
+            cancelled: "Cancelled", dns: "Did not attend",
+            // Queens plasmani ENG
+            q15: "4th place (Umag, Croatia)", q16r: "3rd place", q16l: " (Lisbon, Portugal)", q17: "7th place (Bordeaux, France)",
+            q18: "4th place (Cork, Republic of Ireland)", q19: "8th place (Norrtälje, Sweden)", q24: "7th place (Kiel, Germany)", q25: "9th place (Amsterdam, Netherlands)",
+            // Knights plasmani ENG
+            k08: "2nd place (Prague, Czech Republic)", k09: "3rd place (Samobor, Croatia)", k10: "1st place (Milan, Italy)", k11: "2nd place (Belfast, Northern Ireland)",
+            k12: "5th place (Edinburgh, Scotland)", k13: "3rd place (Bordeaux, France)", k14: "2nd place (London, England)", k15: "3rd place (Umag, Croatia)",
+            k16: "1st place (Lisbon, Portugal)", k17: "7th place (Bordeaux, France)", k18: "3rd place (Cork, Republic of Ireland)", k19: "6th place (Norrtälje, Sweden)",
+            k22: "4th place (Edinburgh, Scotland)", k23: "5th place (Kiel, Germany)", k24: "3rd place (Kiel, Germany)", k25: "7th place (Amsterdam, Netherlands)",
+            // Europsko & Svjetsko & Ostalo ENG
+            ke10: "5th place (Malmo, Sweden)", ke13: "5th place (Dublin, Republic of Ireland)", ke19: "4th place (London, England)", ke22: "4th place (Zagreb, Croatia)",
+            kw17: "1st place – II Division (Melbourne, Australia)", ko07: "Tri-nations cup – 1st place (Zagreb, Croatia)",
             footerCopy: "© 2026 Croatian Australian Football Association"
         }
     };
 
     function toggleLanguage(lang) {
+        // Navigacija i glavni naslovi
         document.getElementById('nav-logo-text').innerText = translations[lang].navLogo;
+        document.getElementById('menu-home').innerText = translations[lang].menuHome;
+        document.getElementById('menu-news').innerText = translations[lang].menuNews;
+        document.getElementById('menu-clubs').innerText = translations[lang].menuClubs;
+        document.getElementById('menu-comp').innerText = translations[lang].menuComp;
+        document.getElementById('menu-rep').innerText = translations[lang].menuRep;
         document.getElementById('page-title').innerText = translations[lang].pageTitle;
         document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+
+        // Harmonika naslovi
+        document.getElementById('title-queens').innerText = translations[lang].titleQueens;
+        document.getElementById('title-knights').innerText = translations[lang].titleKnights;
+
+        // Naslovi sekcija
+        document.querySelectorAll('.class-euro-cup').forEach(el => el.innerText = translations[lang].euroCup);
+        document.getElementById('title-euro-champs').innerText = translations[lang].euroChamps;
+        document.getElementById('title-world-champs').innerText = translations[lang].worldChamps;
+        document.getElementById('title-other').innerText = translations[lang].other;
+
+        // Tablice th zaglavlja
+        document.querySelectorAll('.th-year').forEach(el => el.innerText = translations[lang].thYear);
+        if(document.querySelector('.th-comp')) document.querySelector('.th-comp').innerText = translations[lang].thComp;
+        if(document.querySelector('.th-rank')) document.querySelector('.th-rank').innerText = translations[lang].thRank;
+        document.querySelectorAll('.th-rank-loc').forEach(el => el.innerText = translations[lang].thRank);
+
+        // Otkazano / Nisu nastupile stanja
+        document.querySelectorAll('.txt-cancelled-1, .txt-cancelled-2, .txt-cancelled-3, .txt-cancelled-4').forEach(el => el.innerText = translations[lang].cancelled);
+        document.querySelectorAll('.txt-dns-1, .txt-dns-2').forEach(el => {
+            el.innerText = el.innerText.includes("Edinburgh") ? translations[lang].dns + " (Edinburgh, Scotland)" : translations[lang].dns + " (Kiel, Germany)";
+        });
+
+        // Queens podaci
+        document.getElementById('q-15').innerText = translations[lang].q15;
+        document.getElementById('q-16-rank').innerText = translations[lang].q16r;
+        document.getElementById('q-16-loc').innerText = translations[lang].q16l;
+        document.getElementById('q-17').innerText = translations[lang].q17;
+        document.getElementById('q-18').innerText = translations[lang].q18;
+        document.getElementById('q-19').innerText = translations[lang].q19;
+        document.getElementById('q-24').innerText = translations[lang].q24;
+        document.getElementById('q-25').innerText = translations[lang].q25;
+
+        // Knights podaci
+        document.getElementById('k-08').innerText = translations[lang].k08;
+        document.getElementById('k-09').innerText = translations[lang].k09;
+        document.getElementById('k-10').innerText = translations[lang].k10;
+        document.getElementById('k-11').innerText = translations[lang].k11;
+        document.getElementById('k-12').innerText = translations[lang].k12;
+        document.getElementById('k-13').innerText = translations[lang].k13;
+        document.getElementById('k-14').innerText = translations[lang].k14;
+        document.getElementById('k-15').innerText = translations[lang].k15;
+        document.getElementById('k-16').innerText = translations[lang].k16;
+        document.getElementById('k-17').innerText = translations[lang].k17;
+        document.getElementById('k-18').innerText = translations[lang].k18;
+        document.getElementById('k-19').innerText = translations[lang].k19;
+        document.getElementById('k-22').innerText = translations[lang].k22;
+        document.getElementById('k-23').innerText = translations[lang].k23;
+        document.getElementById('k-24').innerText = translations[lang].k24;
+        document.getElementById('k-25').innerText = translations[lang].k25;
+
+        // Europsko, Svjetsko, Ostalo podaci
+        document.getElementById('ke-10').innerText = translations[lang].ke10;
+        document.getElementById('ke-13').innerText = translations[lang].ke13;
+        document.getElementById('ke-19').innerText = translations[lang].ke19;
+        document.getElementById('ke-22').innerText = translations[lang].ke22;
+        document.getElementById('kw-17').innerText = translations[lang].kw17;
+        document.getElementById('ko-07').innerText = translations[lang].ko07;
     }
 </script>
 </body>

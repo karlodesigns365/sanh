@@ -84,6 +84,21 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
+        /* --- STIL ZA TABLICU LIGE --- */
+        .league-table-container {
+            max-width: 850px;
+            width: 100%;
+            margin: 50px auto 0 auto;
+            text-align: center;
+        }
+        .league-table-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
         /* Sponsor Slider Fix */
         .sponsor-block { background: white; padding: 60px 0; overflow: hidden; border-top: 1px solid #eee; }
         .slider-track { 
@@ -176,6 +191,11 @@
     <div style="text-align:center; margin-top:40px;" data-aos="flip-left">
         <span id="yearCounter" style="font-size: 6rem; font-family:'Oswald'; color:var(--accent); font-weight:700;">0</span>
         <p id="stat-text" style="font-weight:700; color:#888; letter-spacing:1px;">GODINA TRADICIJE U HRVATSKOJ</p>
+    </div>
+
+    <div class="league-table-container" data-aos="fade-up">
+        <h2 id="league-table-title" style="margin-bottom: 25px; color: var(--primary); font-family: 'Oswald'; text-transform: uppercase;">Poredak lige</h2>
+        <img src="MD6_26.png" alt="Tablica Lige" class="league-table-img">
     </div>
 </section>
 
@@ -274,6 +294,7 @@
             aboutTitle: "Što je australski nogomet?",
             aboutText: "Australski nogomet je momčadski sport koji se igra s 18 igrača u polju, a igra se na igralištu za kriket ili sličnom ovalnom igralištu, koje mora biti dugo 135-185 metara, a široko 110-150 metara. Igra se loptom jajastog oblika, ali je ona različita od one kojom se igra ragbi ili američki nogomet. Sličan je ragbiju, američkom nogometu i keltskom nogometu (Gaelic football), a koristi i neke elemente iz nogometa.",
             statText: "GODINA TRADICIJE U HRVATSKOJ",
+            leagueTitle: "Poredak lige",
             sponsorLabel: "Sponzori & Partneri",
             contactH: "Kontaktiraj nas!",
             infoH: "Informacije",
@@ -290,6 +311,7 @@
             aboutTitle: "What is Australian Football?",
             aboutText: "Australian Rules Football is a team sport played by 18 players on an oval field, often a cricket ground, 135-185m long and 110-150m wide. It uses an oval ball, distinct from rugby or American football. It shares elements with rugby, American, and Gaelic football.",
             statText: "YEARS OF TRADITION IN CROATIA",
+            leagueTitle: "League Table",
             sponsorLabel: "Sponsors & Partners",
             contactH: "Contact Us!",
             infoH: "Information",
@@ -315,6 +337,7 @@
         document.getElementById('title-about').innerText = translations[lang].aboutTitle;
         document.getElementById('text-about').innerText = translations[lang].aboutText;
         document.getElementById('stat-text').innerText = translations[lang].statText;
+        document.getElementById('league-table-title').innerText = translations[lang].leagueTitle;
         document.getElementById('sponsor-label').innerText = translations[lang].sponsorLabel;
         document.getElementById('contact-heading').innerText = translations[lang].contactH;
         document.getElementById('info-heading').innerText = translations[lang].infoH;
