@@ -147,6 +147,10 @@
             .contact-grid { grid-template-columns: 1fr !important; gap: 50px; }
             .map-responsive { padding-bottom: 100%; }
         }
+		html, body {
+    overflow-x: hidden; /* Sprječava bježanje stranice lijevo-desno */
+    -webkit-overflow-scrolling: touch; /* Prisiljava iOS na glatko "momentum" skrolanje */
+	}
     </style>
 </head>
 <body>
