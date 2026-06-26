@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="LogoFavicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
         :root {
@@ -48,8 +48,25 @@
 
         /* Content */
         .article-container { padding: 60px 10%; max-width: 800px; margin: 0 auto; }
+        article { margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid #eee; }
+        article:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
         .news-content h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 25px; line-height: 1.3; }
         .news-content p { margin-bottom: 20px; font-size: 1.05rem; }
+        
+        /* Stil za slike unutar novosti */
+        .news-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 25px 0 10px 0;
+            border-radius: 4px;
+        }
+        
+        /* Liste za novu novost prema slici image_bbb58c.png */
+        .news-content ul { margin-left: 20px; margin-bottom: 20px; list-style-type: disc; }
+        .news-content li { font-size: 1.05rem; margin-bottom: 15px; padding-left: 5px; }
+        .news-content a { color: #0066cc; text-decoration: underline; }
 
         .donation-box { 
             background: #f4f7fa; border-left: 5px solid var(--accent); 
@@ -106,10 +123,30 @@
 </header>
 
 <div class="article-container">
+    <!-- NOVA NOVOST (NA VRHU SA SLIKOM) -->
     <article data-aos="fade-up">
         <div class="news-content">
-            <h2 id="article-title">Croatian Knights trebaju vašu podršku!</h2>
-            <div id="news-body">
+            <h2 id="article-title-1">Pojačanja u stručnom stožeru: Izbornik Kravar okupio provjerena imena za Eurocup u Newcastleu</h2>
+            <div id="news-body-1">
+                <p>Lipanj je i pripreme hrvatske reprezentacije za Eurocup su u punom jeku.</p>
+                <p>Dugogodišnji trener reprezentacije <strong>Josip Kravar</strong> ne miruje ni ovog ljeta – uoči Eurocupa dodatno je pojačao svoj stručni tim dovođenjem nekih nama dobro poznatih imena:</p>
+                <ul>
+                    <li><strong>Stanko Bilaver</strong> – čovjek koji je prije dvije godine s reprezentacijom osvojio broncu na Eurocupu u Kielu. Njegovo iskustvo na velikim natjecanjima dolazi u pravom trenutku.</li>
+                    <li><strong>Ivan Ivoš</strong> – izbornik ga je izvukao iz mirovine. Riječ je o jednom od najuspješnijih igrača footya u našoj zajednici, čije znanje i iskustvo mogu biti od velike vrijednosti mladim igračima u pripremnom periodu.</li>
+                </ul>
+                <p>Ovo je tek početak, a najave igrača za Eurocup pratite na našem <a href="https://www.instagram.com/footycroatia/" target="_blank">Instagram profilu</a>.</p>
+                <p><strong>Iznad svih, Hrvatska!</strong></p>
+                <!-- OVDJE JE TVOJA LOKALNA SLIKA -->
+                <img src="novost1.png" alt="Eurocup pripreme" class="news-img">
+            </div>
+        </div>
+    </article>
+
+    <!-- STARA NOVOST -->
+    <article data-aos="fade-up">
+        <div class="news-content">
+            <h2 id="article-title-2">Croatian Knights trebaju vašu podršku!</h2>
+            <div id="news-body-2">
                 <p>Već 20 godina australski nogomet u Hrvatskoj živi zahvaljujući volonterima, entuzijazmu i zajedništvu. Od nule — do dva Euro Cup naslova, do povijesne pobjede na International Cupu 2017. u Melbourneu, i do rasta nacionalne lige.</p>
                 <p>Sada nas čeka najveći projekt do sada: Pripreme u Adelaideu 2026. – domu sporta koji volimo.</p>
                 <p><strong>Zašto Adelaide?</strong> Jer trening s najboljima, pripremne utakmice i povezivanje s hrvatskom dijasporom mogu podići naš razvoj na novu razinu i izravno pomoći rastu sporta u Hrvatskoj.</p>
@@ -142,8 +179,22 @@
             navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
             menuHome: "NASLOVNICA", menuNews: "NOVOSTI", menuClubs: "KLUBOVI", menuComp: "NATJECANJA", menuRep: "REPREZENTACIJA",
             pageTitle: "NOVOSTI",
-            articleTitle: "Croatian Knights trebaju vašu podršku!",
-            body: `<p>Već 20 godina australski nogomet u Hrvatskoj živi zahvaljujući volonterima, entuzijazmu i zajedništvu. Od nule — do dva Euro Cup naslova, do povijesne pobjede na International Cupu 2017. u Melbourneu, i do rasta nacionalne lige.</p>
+            
+            // Nova novost HR (uključena slika na kraju objekta)
+            articleTitle1: "Pojačanja u stručnom stožeru: Izbornik Kravar okupio provjerena imena za Eurocup u Newcastleu",
+            body1: `<p>Lipanj je i pripreme hrvatske reprezentacije za Eurocup su u punom jeku.</p>
+                    <p>Dugogodišnji trener reprezentacije <strong>Josip Kravar</strong> ne miruje ni ovog ljeta – uoči Eurocupa dodatno je pojačao svoj stručni tim dovođenjem nekih nama dobro poznatih imena:</p>
+                    <ul>
+                        <li><strong>Stanko Bilaver</strong> – čovjek koji je prije dvije godine s reprezentacijom osvojio broncu na Eurocupu u Kielu. Njegovo iskustvo na velikim natjecanjima dolazi u pravom trenutku.</li>
+                        <li><strong>Ivan Ivoš</strong> – izbornik ga je izvukao iz mirovine. Riječ je o jednom od najuspješnijih igrača footya u našoj zajednici, čije znanje i iskustvo mogu biti od velike vrijednosti mladim igračima u pripremnom periodu.</li>
+                    </ul>
+                    <p>Ovo je tek početak, a najave igrača za Eurocup pratite na našem <a href="https://www.instagram.com/footycroatia/" target="_blank">Instagram profilu</a>.</p>
+                    <p><strong>Iznad svih, Hrvatska!</strong></p>
+                    <img src="novost1.png" alt="Eurocup pripreme" class="news-img">`,
+
+            // Stara novost HR
+            articleTitle2: "Croatian Knights trebaju vašu podršku!",
+            body2: `<p>Već 20 godina australski nogomet u Hrvatskoj živi zahvaljujući volonterima, entuzijazmu i zajedništvu. Od nule — do dva Euro Cup naslova, do povijesne pobjede na International Cupu 2017. u Melbourneu, i do rasta nacionalne lige.</p>
                    <p>Sada nas čeka najveći projekt do sada: Pripreme u Adelaideu 2026. – domu sporta koji volimo.</p>
                    <p><strong>Zašto Adelaide?</strong> Jer trening s najboljima, pripremne utakmice i povezivanje s hrvatskom dijasporom mogu podići naš razvoj na novu razinu i izravno pomoći rastu sporta u Hrvatskoj.</p>`,
             donInfo: "Skupljamo 60.000 € isključivo za avionske karte za 30 igrača i trenera. Svaka donacija ima nagradu — zahvalnice, ime na zastavi, majice i dresovi.",
@@ -155,8 +206,22 @@
             navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
             menuHome: "HOME", menuNews: "NEWS", menuClubs: "CLUBS", menuComp: "COMPETITIONS", menuRep: "NATIONAL TEAM",
             pageTitle: "LATEST NEWS",
-            articleTitle: "The Croatian Knights need your support!",
-            body: `<p>For 20 years, Australian football in Croatia has been built through volunteer work, passion, and community spirit. From nothing — to two Euro Cup titles, a historic 2017 International Cup win in Melbourne, and a growing national league.</p>
+            
+            // Nova novost ENG (uključena slika na kraju objekta)
+            articleTitle1: "Coaching Staff Reinforcements: Head Coach Kravar Gathers Proven Names for the Eurocup in Newcastle",
+            body1: `<p>It is June and preparations of the Croatian national team for the Eurocup are in full swing.</p>
+                    <p>Longtime national team coach <strong>Josip Kravar</strong> is not resting this summer either – ahead of the Eurocup, he has further strengthened his professional staff by bringing in some well-known names:</p>
+                    <ul>
+                        <li><strong>Stanko Bilaver</strong> – the man who won bronze with the national team at the Eurocup in Kiel two years ago. His experience in major competitions comes at just the right time.</li>
+                        <li><strong>Ivan Ivoš</strong> – the head coach brought him out of retirement. He is one of the most successful footy players in our community, whose knowledge and experience can be of great value to young players during the preparation period.</li>
+                    </ul>
+                    <p>This is just the beginning, follow the player announcements for the Eurocup on our <a href="https://www.instagram.com/footycroatia/" target="_blank">Instagram profile</a>.</p>
+                    <p><strong>Croatia above all!</strong></p>
+                    <img src="novost1.png" alt="Eurocup preparations" class="news-img">`,
+
+            // Stara novost ENG
+            articleTitle2: "The Croatian Knights need your support!",
+            body2: `<p>For 20 years, Australian football in Croatia has been built through volunteer work, passion, and community spirit. From nothing — to two Euro Cup titles, a historic 2017 International Cup win in Melbourne, and a growing national league.</p>
                    <p>Now we are preparing for the most important step in our history: A pre-season trip to Adelaide in 2026 — the birthplace of the sport we love.</p>
                    <p><strong>Why Adelaide?</strong> Because training with top teams, playing practice matches, and reconnecting with the Croatian diaspora will help us develop the sport where it matters most — at home in Croatia.</p>`,
             donInfo: "We are raising €60,000 strictly for flight tickets for 30 players and coaches. Every donation has a reward — from Thank You posters and your name on our flag to shirts and jumpers.",
@@ -174,8 +239,15 @@
         document.getElementById('menu-comp').innerText = translations[lang].menuComp;
         document.getElementById('menu-rep').innerText = translations[lang].menuRep;
         document.getElementById('page-title').innerText = translations[lang].pageTitle;
-        document.getElementById('article-title').innerText = translations[lang].articleTitle;
-        document.getElementById('news-body').innerHTML = translations[lang].body;
+        
+        // Prijevodi za prvu novost
+        document.getElementById('article-title-1').innerText = translations[lang].articleTitle1;
+        document.getElementById('news-body-1').innerHTML = translations[lang].body1;
+        
+        // Prijevodi za drugu novost
+        document.getElementById('article-title-2').innerText = translations[lang].articleTitle2;
+        document.getElementById('news-body-2').innerHTML = translations[lang].body2;
+        
         document.getElementById('don-info').innerText = translations[lang].donInfo;
         document.getElementById('don-btn').innerText = translations[lang].donBtn;
         document.getElementById('p-thanks').innerText = translations[lang].thanks;
