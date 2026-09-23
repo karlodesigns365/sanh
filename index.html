@@ -202,6 +202,142 @@
     </div>
 </section>
 
+<!-- NADOLAZEĆE AKTIVNOSTI SEKCIJA -->
+<section id="aktivnosti" style="background: #f8f9fa;">
+    <h2 class="section-title" data-aos="fade-up" id="activities-title">Nadolazeće aktivnosti</h2>
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+            <!-- Event 1 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="event-date">
+                    <span class="event-day">26</span>
+                    <span class="event-month">SRP</span>
+                    <span class="event-weekday">SUB</span>
+                </div>
+                <div class="event-details">
+                    <h3 class="event-name">Gledanje AFL Grand Finala</h3>
+                    <p class="event-location">📍 Vinoteka Bornstein, Kaptol 19, Zagreb</p>
+                    <p class="event-time">🕕 18:30</p>
+                    <p class="event-note">Uz podršku Australskog veleposlanstva u Hrvatskoj</p>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="event-date">
+                    <span class="event-day">27</span>
+                    <span class="event-month">SRP</span>
+                    <span class="event-weekday">NED</span>
+                </div>
+                <div class="event-details">
+                    <h3 class="event-name">10. kolo lige australskog nogometa</h3>
+                    <p class="event-location">📍 Sesvete, Bistrička ul. 9/1</p>
+                    <p class="event-time">🕕 Početak 10:00</p>
+                    <p class="event-note">Teren iza restorana</p>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="event-date">
+                    <span class="event-day">10</span>
+                    <span class="event-month">LIS</span>
+                    <span class="event-weekday">SUB</span>
+                </div>
+                <div class="event-details">
+                    <h3 class="event-name">Lady Nations Cup</h3>
+                    <p class="event-location">📍 Beč, Austrija</p>
+                    <p class="event-time">🕕 Početak TBD</p>
+                    <p class="event-note">Odlazak Croatian Queens na drugo izdanje natjecanja</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Event Card Styles */
+    .event-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: stretch;
+    }
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .event-date {
+        background: var(--primary);
+        color: white;
+        padding: 20px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 80px;
+    }
+    .event-day {
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: 'Oswald', sans-serif;
+        line-height: 1;
+    }
+    .event-month {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 5px;
+        font-family: 'Oswald', sans-serif;
+    }
+    .event-weekday {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        margin-top: 3px;
+    }
+    .event-details {
+        padding: 20px;
+        flex: 1;
+    }
+    .event-name {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.1rem;
+        color: var(--primary);
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+    .event-location, .event-time, .event-note {
+        font-size: 0.85rem;
+        color: #555;
+        margin-bottom: 5px;
+        line-height: 1.4;
+    }
+    .event-time {
+        font-weight: 600;
+        color: var(--accent);
+    }
+    .event-note {
+        font-style: italic;
+        color: #888;
+        margin-top: 8px;
+        font-size: 0.8rem;
+    }
+    
+    @media (max-width: 768px) {
+        .event-card {
+            flex-direction: column;
+        }
+        .event-date {
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+        }
+    }
+</style>
+
 <section id="o-sportu">
     <h2 class="section-title" data-aos="fade-down" id="title-about">Što je australski nogomet?</h2>
     <div class="content-left" data-aos="fade-right">
@@ -319,6 +455,13 @@
             navLogo: "SAVEZ AUSTRALSKOG NOGOMETA HRVATSKE",
             mHome: "NASLOVNICA", mNews: "NOVOSTI", mClubs: "KLUBOVI", mComp: "NATJECANJA", mRep: "REPREZENTACIJA",
             welcome: "DOBRODOŠLI", assoc: "na službenu stranicu Saveza Australskog nogometa Hrvatske", cta: "ŽELIŠ TRENIRATI?",
+			activitiesTitle: "Nadolazeće aktivnosti",
+			event1Name: "Gledanje AFL Grand Finala",
+			event1Note: "Uz podršku Australskog veleposlanstva u Hrvatskoj",
+			event2Name: "10. kolo lige australskog nogometa",
+			event2Note: "Teren iza restorana",
+			event3Name: "Lady Nations Cup",
+			event3Note: "Odlazak Croatian Queens na drugo izdanje natjecanja",
             aboutTitle: "Što je australski nogomet?",
             aboutText: "Australski nogomet je momčadski sport koji se igra s 18 igrača u polju, a igra se na igralištu za kriket ili sličnom ovalnom igralištu, koje mora biti dugo 135-185 metara, a široko 110-150 metara. Igra se loptom jajastog oblika, ali je ona različita od one kojom se igra ragbi ili američki nogomet. Sličan je ragbiju, američkom nogometu i keltskom nogometu (Gaelic football), a koristi i neke elemente iz nogometa.",
             statText: "GODINA TRADICIJE U HRVATSKOJ",
@@ -336,6 +479,13 @@
             navLogo: "CROATIAN AUSTRALIAN FOOTBALL ASSOCIATION",
             mHome: "HOME", mNews: "NEWS", mClubs: "CLUBS", mComp: "COMPETITIONS", mRep: "NATIONAL TEAM",
             welcome: "WELCOME", assoc: "to the official website of the Croatian Australian Football Association", cta: "WANT TO TRAIN?",
+			activitiesTitle: "Upcoming Activities",
+			event1Name: "Watch AFL Grand Final",
+			event1Note: "With the support of the Australian Embassy in Croatia",
+			event2Name: "Round 10 of AFL League",
+			event2Note: "Field behind the restaurant",
+			event3Name: "Lady Nations Cup",
+			event3Note: "Croatian Queens traveling to second edition of the tournament",
             aboutTitle: "What is Australian Football?",
             aboutText: "Australian Rules Football is a team sport played by 18 players on an oval field, often a cricket ground, 135-185m long and 110-150m wide. It uses an oval ball, distinct from rugby or American football. It shares elements with rugby, American, and Gaelic football.",
             statText: "YEARS OF TRADITION IN CROATIA",
@@ -378,6 +528,14 @@
         document.getElementById('role-sec').innerText = translations[lang].roleT;
         document.getElementById('footer-social-title').innerText = translations[lang].footerSocial;
         document.getElementById('footer-copy').innerText = translations[lang].footerCopy;
+		document.getElementById('activities-title').innerText = translations[lang].activitiesTitle;
+		document.querySelectorAll('.event-name')[0].innerText = translations[lang].event1Name;
+		document.querySelectorAll('.event-note')[0].innerText = translations[lang].event1Note;
+		document.querySelectorAll('.event-name')[1].innerText = translations[lang].event2Name;
+		document.querySelectorAll('.event-note')[1].innerText = translations[lang].event2Note;
+		document.querySelectorAll('.event-name')[2].innerText = translations[lang].event3Name;
+		document.querySelectorAll('.event-note')[2].innerText = translations[lang].event3Note;
+
     }
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyVfzMZoelyKMgooLB-KFJ1Y-pq6DF4Em0Lm6mw9Vyo0ba1ZBnUrmPqf_81Y4RfjgmS/exec';
